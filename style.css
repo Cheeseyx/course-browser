@@ -1,0 +1,25 @@
+table, td{
+	padding: 5px;
+}
+
+.table-striped tbody .odd td{
+	background-color: #e3e3e3;
+}
+
+.table-striped tbody .even td{
+	background-color: #f9f9f9;
+}
+
+.table-striped tbody .details td{
+	background-color: #d0d0d0;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+	background-color: #c9c9c9;
+}
+
+.collapsing {
+  -webkit-transition: height .35s ease;
+       -o-transition: height .35s ease;
+          transition: height .35s ease;
+}

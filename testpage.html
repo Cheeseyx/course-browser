@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- Bootstrap CSS -->
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ <!-- jQuery library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+ <!-- Bootstrap JavaScript -->
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ <!-- Datatables CSS -->
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.css"/>
+ <!-- Datatables Javascript -->
+ <script type="text/javascript" src="https://cdn.datatables.net/u/bs/dt-1.10.12/datatables.min.js"></script>
+ <!-- Custom Stylesheet -->
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+ <button onclick="load2016spring()">Spring 2016</button> 
+ <button onclick="load2016fall()">Fall 2016</button> 
+ <button onclick="addDetails()">Add details</button> 
+ <span id="debug">debug: </span>
+ <br>
+
+ <table id="departments" border="1"></table>
+ <table id="gened" border="1"></table>
+ <div id="labs"></div>
+
+
+
+ <table id="classTable" class="display table table-striped table-hover table-condensed" width="99%"></table>
+
+ <script src="courseData2016fall.js"></script>
+ <script src="courseData2016spring.js"></script>
+ <script src="departments.js"></script>
+ <script src="gened.js"></script>
+ <script src="courseDescriptions.js"></script>
+ <script src="crndata.js"></script>
+ <script src="mainScript.js"></script>
+
+
+</body>
+</html>
