@@ -1,9 +1,11 @@
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -11,6 +13,11 @@ import java.util.HashMap;
  * Created by Tara on 6/8/2016.
  */
 public class Scraper {
+
+    /*
+    TODO: Move from static methods into class-based?
+    TODO: Fix gen-ed parsing for spring 2017
+     */
 
     public static void main(String[] args) {
         //loadClassDescriptions();
@@ -24,6 +31,12 @@ public class Scraper {
         //loadClasses("2017spring");
     }
 
+    public static String getAutogenString(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        return "//File generated on"+dateFormat.format(date);
+    }
+
     public static void loadDetailedDescriptions(){
         int start=10002;
         int end=11000;
@@ -32,6 +45,7 @@ public class Scraper {
         String base="https://webapps.macalester.edu/utilities/scheduledetail/coursedetail.cfm?CRN=";
         try{
             PrintWriter writer = new PrintWriter("crndata.js", "UTF-8");
+            writer.println(getAutogenString());
             writer.println("var descCRN = {};");
             for(int i=start; i<end; i++){
                 System.out.println(base+i);
@@ -130,6 +144,7 @@ public class Scraper {
 
         try {
             PrintWriter writer = new PrintWriter("courseDescriptions.js", "UTF-8");
+            writer.println(getAutogenString());
             writer.println("var descriptions = {};");
             for (String key : descMap.keySet()) {
                 String desc=descMap.get(key);
@@ -292,6 +307,7 @@ public class Scraper {
         try {
             PrintWriter writer = new PrintWriter("courseData" +semester+ ".js", "UTF-8");
 
+            writer.println(getAutogenString());
             writer.println("function load"+semester+"(){");
             //writer.println("    table.clear().draw();");
             writer.println("    table.destroy();");
