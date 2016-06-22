@@ -15,21 +15,20 @@ function loadTable(data){
         "paging": false,
         "dom": 'tipr',
         columns: [
-            { title: "Department" },
+            { title: "Dept." },
             { title: "Number" },
             { title: "Title" },
             { title: "Days" },
-            { title: "Time" },
+            { title: "Time" , "width": "60px"},
             { title: "Location" },
             { title: "Professor" },
             { title: "Space" },
             { title: "Gen. Ed."},
-            { title: "Qs" },
-            { title: "GenEdTags" },
-            { title: "CRN"}
+            { title: "Qs" , "visible": false },
+            { title: "GenEdTags" , "visible": false },
+            { title: "CRN" , "visible": false}
         ]
     });
-    table.columns([9,10,11]).visible(false);
 
     //Re-search to preserve old search parameters
     search();
@@ -103,7 +102,7 @@ function expandDetails(eleID){
 
 
     var leftPad=2;
-    var descWidth=1;
+    var descWidth=4;
     var rightPad=9-leftPad-descWidth;
     parentRow.after("<tr id=row"+eleID+" role=row> <td colspan="+leftPad+"></td><td colspan="+descWidth+"><div id=div"+eleID
         +" class=collapse>"+description+"</div></td><td colspan="+rightPad+"></td> </tr></div>");
