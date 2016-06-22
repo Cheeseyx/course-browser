@@ -1,0 +1,2171 @@
+@charset "UTF-8";
+
+/* Macalester.edu templates global CSS file
+   This file declares styles that affect the display of the over-all layout and block-level 
+   elements, excluding elements of the global navigation and footer blocks.
+   
+   Note: Styles that apply to text, in-line elements, and any element that can be edited in a 
+   WYSIWYG editor should be included in text.css.
+   
+   Versions: This file is kept under source control along with other all other template dependencies
+   ("resources" folder) in the SVN repository /GROUPS/Webstaff/svn/web2010
+   
+   CSS loading order:
+    blueprint/screen.css
+    blueprint/print.css
+    blueprint/ie.css (>=IE7 only)
+    layout.css
+    mainNav.css
+	layout-ie.css (>=IE7 only)
+	layout-ie6.css (>=IE6 only)
+    text.css
+   
+   Many elements have hair-line border with a drop shadow requiring multiple properties:
+    border: solid 1px #EFEFEF;
+   	-moz-box-shadow: 0px 3px 4px #c5c5c5;
+	-webkit-box-shadow: 0px 3px 4px #c5c5c5;
+	box-shadow: 0px 3px 4px #c5c5c5;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5');
+   
+*/
+
+	body {
+		background: #ded7cf;
+		margin: 0;
+		padding: 0;
+	 }
+	div#docBody {
+		text-align: left;
+	 }
+	div#body {
+		background: url(homepagebodybg.gif) top left repeat-y #CFC2B9;
+		margin-left: auto;
+		margin-right: auto;
+		width: 976px;
+	 }
+	div#body div.mainBlock {
+		background: #fbf9f7;
+	 }
+
+
+/*---------------------------------------------------------------------
+  HOMEPAGE FEATURE
+  Full-width promo, links to change center image in orange along left 
+  side. Max. 6 items.
+  Used on homepage and academics
+  Related JS: large_story_rotation_random.js, or large_story_rotation.js
+-----------------------------------------------------------------------*/
+	div#homepageFeature {
+		margin: 0; 
+		padding: 0; 
+		position: relative; 
+		-moz-box-shadow: 0 3px 4px #c5c5c5; 
+		-webkit-box-shadow: 0 3px 4px #c5c5c5; 
+		box-shadow: 0 3px 4px #c5c5c5;
+		/* For IE 8 */ -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5')"; 
+		/* For IE 5.5 - 7 */ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5');
+	}
+	div#homepageFeature h2 {
+		display: none;
+	 }
+	div#homepageFeature ul.featureIndex {
+		background: #ea8106;
+		border: solid 1px #F39A3E;
+		list-style: none;
+		margin: 9px 8px 7px 8px;
+		padding: 8px;
+		position: absolute;
+		z-index: 4;
+	 }
+	div#homepageFeature ul.featureIndex li {
+		border: solid 1px #F39A3E;
+		display: block;
+		list-style: none;
+		margin: 0;
+		margin-top: -1px;
+		padding: 0;
+		width: 244px;
+	 }
+	div#homepageFeature ul.featureIndex li a {
+		display: inline-block;
+	 }
+	div#homepageFeature ul.featureIndex li a {
+		color: #FFF;
+		display: block;
+		font-weight: bold;
+		overflow: visible;
+		padding: 12px 12px 10px 10px;
+		position: relative;
+		text-transform: uppercase;
+		white-space: nowrap;
+	 }
+	div#homepageFeature ul.featureIndex li a:hover {
+		background: #f49c42;
+		text-decoration: none;
+	 }
+	div#homepageFeature ul.featureIndex li a.selected {
+		background: #f49c42;
+		-moz-outline-style: none;
+		outline: none;
+	 }
+	div#homepageFeature ul.featureIndex li a span.arrow {
+		background: url(rotation_arrow.png) no-repeat;
+		display: block;
+		height: 44px;
+		position: absolute;
+		right: -14px;
+		top: 0px;
+		width: 14px;
+	 }
+	div#homepageFeature div.featureContent {
+		background: none;
+		height: 308px;
+		width: 952px;
+	 }
+	div#homepageFeature div.featureContent div {
+	 }
+	div#homepageFeature div.featureContent div.featureImage {
+		height: 308px;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		width: 952px;
+		z-index: 3;
+	 }
+	div#homepageFeature div.featureContent div.featureLeadIn {
+		background: no;
+		height: 308px;
+		left: 295px;
+		position: absolute;
+		top: 0px;
+		width: 646px;
+	 }
+	div#homepageFeature div.featureContent div.featureLeadIn p {
+		background: none;
+		bottom: 0px;
+		margin: 8px;
+		padding: 0;
+		position: absolute;
+		right: 0px;
+		width: 300px;
+	 }
+	div#homepageFeature div.featureContent div.bottomleft p {
+		bottom: 0px;
+		left: 0px;
+	 }
+	div#homepageFeature div.featureContent div.topleft p {
+		height: auto;
+		left: 0px;
+		top: 0px;
+	 }
+	div#homepageFeature div.featureContent div.topright p {
+		height: auto;
+		right: 0px;
+		top: 0px;
+	 }
+	div#homepageFeature div.featureContent div.featureLeadIn a {
+		background: url(transp_bg.png) top left repeat;
+		color: #333;
+		display: block;
+		font-family: "Garamond", Georgia, "Times New Roman", Times, serif;
+		font-size: 16px;
+		padding: 13px;
+	 }
+	div#homepageFeature div.featureContent div.featureLeadIn a:hover {
+		background: #604969;
+		background: #666;
+		color: #FFF;
+		text-decoration: none;
+	 }
+	div#homepageFeature div.featureContent div.featureLeadIn strong {
+		display: block;
+		font-size: 1.3em;
+		font-weight: normal;
+	 }
+
+
+/*---------------------------------------------------------------------
+  SPECIAL HOMEPAGE STYLES
+  Add top margin and hide heading for "Around Campus" section of home
+  page.
+  TODO: Should this be changed to "aroundCampus" or something descriptive?
+-----------------------------------------------------------------------*/
+	div#leftCol {
+		margin-top: 8px;
+	}
+	div#leftCol h2 {
+		display: none;
+	}
+
+/*---------------------------------------------------------------------
+  NEWS AND MEDIA ACCORDION
+  Used extensively throughout the site. Requires JQuery UI.
+  Related JS: jquery-ui-1.8.2.custom.min.js, homepage.js
+  TODO: Take configuration JS out of homepage?
+-----------------------------------------------------------------------*/
+	div#happenings {
+		margin-left: 8px;
+		-moz-box-shadow: 0 3px 4px #c5c5c5;
+		-webkit-box-shadow: 0 3px 4px #c5c5c5;
+		box-shadow: 0 3px 4px #c5c5c5;
+		/* For IE 8 */
+		-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5')";
+		/* For IE 5.5 - 7 */
+		filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5');
+	 }
+	div#happenings div#frontPageEvents, div#happenings div#frontPagePhotos, div#happenings div#frontPageVideos, div#happenings div#frontPageAudio {
+		background: #d4c9c0h;
+		height: 225px;
+		overflow: hidden;
+		position: relative;
+	 }
+	div#happenings h3 {
+		background: url(hp_acc_h3bg.jpg) bottom left repeat-x #dac8bd;
+		/*border: solid 1px #c4b3a8;*/
+		font-size: .8571em;
+		margin: 0;
+		padding: 0;
+	 }
+	div#happenings h3 a {
+		background: url(hp_acc_h3arrow_off.jpg) center right no-repeat;
+		color: #604969;
+		display: block;
+		font-weight: bold;
+		margin-right: 8px;
+		padding: 7px 11px;
+		text-transform: uppercase;
+	 }
+	div#happenings h3.ui-state-active a {
+		background-image: url(hp_acc_h3arrow_on.jpg);
+		color: #604969;
+		text-decoration: none;
+	 }
+	div#happenings h3 a:hover {
+		/*background-image: url(hp_acc_h3arrow_on.jpg);*/
+		text-decoration: underline;
+		cursor: pointer;
+	 }
+	div#happenings h3 a:focus, div#happenings h3 a:active, div#happenings h3:focus {
+		-moz-outline-style: none;
+		outline: none;
+	 }
+	div#happenings div.content {
+		height: 200px;
+		overflow: auto;
+		background: white;
+	 }
+	div#happenings p.seeMore {
+		background: #604969;
+		height: 25px;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		width: 100%;
+	 }
+	div#happenings p.seeMore span.more {
+		float: right;
+		font-weight: bold;
+		margin-right: 10px;
+	 }
+	div#happenings p.seeMore span.submit {
+		float: left;
+		margin-left: 10px;
+	 }
+	div#happenings p.seeMore a {
+		color: #FFFFFF;
+		font-size: .7856em;
+	 }
+	div#happenings div.content ul {
+		margin: 0;
+		padding: 0;
+	 }
+	div#happenings div.content li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	 }
+	div#happenings div.content li a {
+		background: white;
+		border-bottom: solid 1px #d7c9bf;
+		color: #333333;
+		display: block;
+		font-size: .8571em;
+		padding: 8px;
+		position: relative;
+	 }
+div#happenings div.events li a {
+		padding: 8px;
+		padding-bottom: 8px;
+	 }
+div#happenings div.events li a:after {
+	  content: "\0020";
+	  display: block;
+	  height: 0;
+	  clear: both;
+	  visibility: hidden;
+	  overflow:hidden;
+	}
+	 
+	div#happenings div.content li a:focus {
+		outline-offset: -1px;
+	 }
+	div#happenings div.content li a:hover {
+		background: #CFDAD4;
+		text-decoration: none;
+	 }
+	
+	div#happenings div.content li img {
+		float: left;
+		width: 65px;
+	}
+	
+	div#happenings div.content li span.vidTitle {
+		display: inline-block;
+		height: 45px;
+		width: 142px;
+		padding-left: 10px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		vertical-align: middle;
+		line-height: normal;
+	 }
+	/*div#happenings span.date {
+		display: block;
+		float: left;
+		font-weight: bold;
+		margin-top: -.1em;
+		text-align: center;
+		text-transform: none;
+		width: 4em;
+	 }
+	div#happenings span.date span {
+		display: block;
+		float: left;
+		line-height: normal;
+		text-align: center;
+		width: 4em;
+	 }*/
+	div#happenings span.eventName {
+		display: block;
+		line-height: 1.5em;
+		margin-left: 4em;
+		padding-bottom: 0;
+		padding-top: 0;
+	 }
+	/*div#happenings span.dow, div#happenings span.tod {
+		color: #999;
+	 }
+	div#happenings span.date span.tod {
+		line-height: 1.5em;
+		padding-bottom: .45em;
+		padding-top: .5em;
+	 }*/
+
+
+
+div#happenings div.events span.date {
+	display:block;
+	text-align: center;
+	float:left;
+	font-family: Arial, Helvetica, sans-serif;
+	border-bottom:none;
+	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 2px 5px 3px 5px;
+	width: 30px;
+	background: url(/resources/v2/web-imgs/eventListDate.png) 1px 0px no-repeat;
+	color: #FFF;
+	margin-right: 8px;
+	margin-left: 0;
+}
+
+div#happenings div.events span.month {
+	display:block;
+	font-size: 11px;
+	margin:0;
+	padding:0;
+	line-height: 16px;
+}
+div#happenings div.events span.day {
+	display:block;
+	font-size:12px;
+	margin:0;
+	padding:0;
+	line-height: 16px;
+}
+
+
+
+/*---------------------------------------------------------------------
+  FEATURED LINKS
+  Used on homepage and other pages
+  TODO: Add styling for "tooltips" under link title.
+-----------------------------------------------------------------------*/
+	div#quickLinks {
+		margin-top: 8px;
+	 }
+	div#quickLinks h3 {
+		display: none;
+	 }
+	div#quickLinks ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	 }
+	div#quickLinks ul li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	 }
+	div#quickLinks ul li a {
+		background: white;
+		border-bottom: solid 1px #ece7e2;
+		color: #8f7f78;
+		display: block;
+		font-weight: bold;
+		line-height: 3em;
+		padding: 4px 8px;
+		text-transform: uppercase;
+	 }
+	div#quickLinks ul li a:hover {
+		background: #e0e7e3;
+		color: #5e483e;
+		cursor: pointer;
+		text-decoration: none;
+	 }
+	div#quickLinks ul li a img {
+		padding-right: 2px;
+		vertical-align: middle;
+	 }
+
+
+/*---------------------------------------------------------------------
+  GENERIC DROP SHADOW
+  TODO: Find out where this is being used and replace with symantic
+  attributes. JH - theatre photos albums, supportmac, wil be used in various other pull outs --- 
+  
+-----------------------------------------------------------------------*/
+	.shadow {
+		-moz-box-shadow: 0 3px 4px #c5c5c5;
+		-webkit-box-shadow: 0 3px 4px #c5c5c5;
+		box-shadow: 0 3px 4px #c5c5c5;
+		/* For IE 8 */
+		-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5')";
+		/* For IE 5.5 - 7 */
+		filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5');
+	}
+	
+	.colorblock {
+	background:#CFDAD4;
+		background:-moz-linear-gradient(90deg, #cfdad4, #e0e7e3); /* Firefox */
+	background:-webkit-gradient(linear, left top, left bottom, from(#cfdad4), to(#e0e7e3)); /* Webkit */
+	border:1px solid #cfdad4;
+	-moz-border-radius:8px;
+	-moz-box-shadow: 0px 3px 4px #c5c5c5; 
+		-webkit-box-shadow: 0px 3px 4px #c5c5c5; 
+	margin:8px; auto 0;
+	padding:8px;
+	margin-bottom: 16px;
+}
+
+div.colorblock h3 {
+		color: #e07911;
+		font-size: 1em;
+		font-weight: bold;
+		margin: 8px 8px 16px 8px;
+		text-transform: uppercase;}
+
+
+/*---------------------------------------------------------------------
+  HOMEPAGE NEWS SUB-FEATURES
+  Related JS: homepage.js (adds hover class)
+  TODO: These should probably moved to a homepage-specific CSS file if 
+  not to be used elsewhere on the web site.
+-----------------------------------------------------------------------*/
+	div.newsFeatures {
+		margin-top: 8px;
+	 }
+	div.newsFeatures h2 {
+		display: none;
+	 }
+	div.newsFeatures h4 {
+		color: #e07911;
+		font-size: .87154em;
+		font-weight: bold;
+		margin-bottom: 2px;
+		margin-left: 8px;
+		margin-right: 8px;
+		text-transform: uppercase;
+	 }
+	div.newsFeatures p {
+		color: #666666;
+		font-size: 12px;
+		margin-bottom: 0;
+		margin-left: 8px;
+		margin-right: 0;
+		margin-top: 0;
+	 }
+	div.newsFeatures p.newsImg {
+		margin-bottom: 8px;
+		margin-left: 8px;
+		margin-top: 8px;
+	 }
+	div.newsFeatures div.newsItem {
+		-moz-box-shadow: 0 3px 4px #c5c5c5; 
+		-webkit-box-shadow: 0 3px 4px #c5c5c5; 
+		box-shadow: 0 3px 4px #c5c5c5; 
+		/* For IE 8 */ -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5')"; 
+		/* For IE 5.5 - 7 */ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5'); 
+		position: relative;
+	}
+	div.newsFeatures div.newsItem div {
+		background: white;
+		border: solid 1px #EEEEEE;
+		height: 300px;
+		overflow: hidden;
+	 }
+	div.newsFeatures div.hover div {
+		border-color: #ddd3ca;
+		cursor: pointer;
+	 }
+	div.newsFeatures div.newsItem span.border {
+		border: solid 3px white;
+		display: block;
+		height: 294px;
+		width: 141px;
+	 }
+	div.newsFeatures div.hover span.border {
+		border: solid 3px #ddd3ca;
+	 }
+	div.newsFeatures div.hover a:hover {
+		text-decoration: none;
+	 }
+
+
+/*---------------------------------------------------------------------
+  HOMEPAGE ADMISSIONS BLOCK
+  Includes page-flip effect through image replacement.
+  TODO: These should probably moved to a homepage-specific CSS file if 
+  not to be used elsewhere on the web site.
+-----------------------------------------------------------------------*/
+	div.studentInfo {
+		margin-top: 8px;
+	 }
+	div.studentInfo div {
+		background: white;
+		border: solid 1px #EFEFEF;
+		height: 300px;
+		margin-right: 8px;
+		position: relative;
+	 }
+	div.studentInfo h3 {
+		color: #e07911;
+		font-size: 1em;
+		font-weight: bold;
+		padding: 8px;
+		text-transform: uppercase;
+	 }
+	div.studentInfo ul {
+		margin: 8px 8px 8px 30px;
+		padding: 0;
+	 }
+	div.studentInfo p.whyMac {
+		bottom: 0px;
+		height: 90px;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		right: 0px;
+		text-align: center;
+		vertical-align: middle;
+		width: 225px;
+	 }
+	div.studentInfo p.whyMac a {
+		background: url(hp_whyMac_off.gif) top left no-repeat;
+		display: block;
+		height: 100%;
+		text-indent: -9999px;
+		width: 100%;
+	 }
+	div.studentInfo p.whyMac a:hover {
+		background-image: url(hp_whyMac.gif);
+	 }
+
+  
+/*---------------------------------------------------------------------
+  BLOCK IMAGE AD WITH HOVER
+  Used for promotions on the homepage and alumni homepage.
+  TODO: Generalize styling so these can be used in more places, base
+  widths off of parent column width.
+-----------------------------------------------------------------------*/
+	div.promo1 p, div.promo1long p, div.promo2 p, div.promo3 p, div.promo4 p {
+		height: 104px;
+		margin: 8px 0 8px 0;
+		overflow: hidden;
+		padding: 0;
+		position: relative;
+	 }
+	div.promo1 {
+		overflow: auto;
+		width: 232px;
+	 }
+	 
+	 div.promo1long {
+		overflow: auto;
+		width: 456px;
+	 }
+	div.promo1 span,  div.promo1long span, div.promo2 span, div.promo3 span, div.promo4 span {
+		display:block; 
+		/* for IE */ filter:alpha(opacity=90);
+		/* CSS3 standard */ opacity:0.9; 
+		color: white; 
+		font-size: 1em; 
+		font-weight: bold; 
+		padding: 20px 24px 15px 24px; 
+		text-align: center; 
+		position: absolute; 
+		height: 69px; 
+		line-height: normal; 
+		bottom: 500px; 
+		background: #6b5274;
+	}
+	div.promo1 p, div.promo1long p {
+		margin-left: 8px;
+	 }
+	div.promo1 a:hover span, div.promo1long a:hover span, div.promo2 a:hover span, div.promo3 a:hover span, div.promo4 a:hover span {
+		bottom: 0px;
+	 }
+	div.promo1 span, div.promo4 span {
+		width: 180px;
+	 }
+	div.promo2 span, div.promo3 span {
+		width: 184px;
+	 }
+	 
+	 div.promo1long span {
+		 width: 400px;
+	 }
+
+
+/*---------------------------------------------------------------------
+  PAGE TITLE BLOCK AND BREAD CRUMBS
+  
+-----------------------------------------------------------------------*/
+	div.documentHead {
+		background: #7e6787;
+		padding-top: 10px;
+		position: relative;
+		z-index: 1;
+	 }
+	div.documentHead h1, div.documentHead h2 {
+		font-family: Garamond, "Times New Roman", Times, serif;
+		font-weight: normal;
+		line-height: 1.3em;
+		margin-left: 8px;
+		margin-right: 8px;
+		text-shadow: #695B6C 0px 0px 2px;
+		clear: left;
+	 }
+	div.documentDesc, div.documentDescFull {
+		background: url(pageTitle_bg.jpg) bottom left repeat-x #806787;
+		border: solid 2px #755d7d;
+		border-bottom: none;
+		margin-left: 280px;
+		margin-right: 8px;
+	 }
+	div.documentDescFull {
+		margin-left: 8px;
+	 }
+	div.pageCrumbs ul {
+		height: 20px;
+		list-style: none;
+		margin: 0;
+		margin-left: 8px;
+		margin-right: 8px;
+		margin-top: 3px;
+		white-space: nowrap;
+		width: 100%;
+	 }
+	div.pageCrumbs li {
+		background: url(crumb_sep.gif) center right no-repeat;
+		color: #c1bec2;
+		display: block;
+		float: left;
+		font-size: .75em;
+		list-style: none;
+		margin-right: 2px;
+		padding-right: 10px;
+		text-transform: uppercase;
+	 }
+	div.pageCrumbs li.last-bc {
+		background: none;
+	 }
+	div.pageCrumbs li a, div.pageCrumbs li a:visited {
+		color: #d0c4c4;
+	 }
+	 
+	 
+	 
+	 div.pageCrumbsinterior ul {
+		height: 20px;
+		list-style: none;
+		margin: 0;
+		margin-left: 8px;
+		margin-right: 8px;
+		margin-top: 3px;
+		white-space: nowrap;
+		width: 100%;
+	 }
+	div.pageCrumbsinterior li {
+		background: url(crumb_sep_interior.gif) center right no-repeat;
+		color: #807285;
+		display: block;
+		float: left;
+		font-size: .75em;
+		list-style: none;
+		margin-right: 2px;
+		padding-right: 10px;
+		text-transform: uppercase;
+	 }
+	div.pageCrumbsinterior li.last-bc {
+		background: none;
+	 }
+	div.pageCrumbsinterior li a, div.pageCrumbsinterior li a:visited {
+		color: #604969;
+	 }
+
+
+/*---------------------------------------------------------------------
+  SUB-SITE NAVIGATION
+  Related JS: homepage.js (adds hover class)
+-----------------------------------------------------------------------*/
+	div.subSiteMenu {
+		background: #ea8106;
+		margin: -40px 0 8px 0;
+		padding: 9px 7px;
+		position: relative;
+		z-index: 2;
+		zoom: 1;
+	 }
+	div.subSiteMenu ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	 }
+	div.subSiteMenu li {
+		border: solid 1px #f49c42;
+		list-style: none;
+		margin: 0;
+		margin-top: -1px;
+		padding: 0;
+	 }
+	div.subSiteMenu li a, div.subSiteMenu li a:hover, div.subSiteMenu li a:visited, div.subSiteMenu li a.external {
+		background: none;
+		color: #FFF;
+		display: block;
+		font-weight: bold;
+		padding: 10px 0 10px 25px;
+		text-shadow: #EA8106 0px 0px 2px;
+		text-transform: uppercase;
+		width: 225px;
+	 }
+	div.subSiteMenu li a:hover, div.subSiteMenu li.selected, div.subSiteMenu li a.external:hover {
+		background: url(subsitemenu_bg.jpg) 0px 10px no-repeat;
+		background-position: 0px 10px !important;
+		text-decoration: none;
+	 }
+	div.subSiteMenu li strong a, div.subSiteMenu li strong a:hover, div.subSiteMenu li strong a:visited {
+		font-family: garamond, Georgia, "Times New Roman", Times, serif;
+		font-size: 1.9em;
+		font-weight: normal;
+		line-height: normal;
+		text-shadow: #EA8106 0px 0px 2px;
+		text-transform: none;
+	 }
+	div.subSiteMenu ul ul {
+		padding-bottom: 10px;
+	 }
+	div.subSiteMenu li li {
+		border: none;
+	 }
+	div.subSiteMenu li li a, div.subSiteMenu li li a:visited, div.subSiteMenu li li a:hover {
+		font-size: 1em;
+		padding: 0 10px 10px 40px;
+		line-height: 17px;
+		text-transform: none;
+		width: 205px;
+	 }
+	div.subSiteMenu li li a:hover {
+		background: none;
+		text-decoration: underline;
+	 }
+	div.subSiteMenu li li.selected {
+		background-image: url(subsitemenu_bg_sm.jpg);
+		background-position: 0px 5px !important;
+	 }
+	li.sub-site-search p {
+		margin: 0;
+		padding: .8em 25px .8em 25px;
+	 }
+	.sub-site-search input {
+		font-size: 1em;
+		margin: 0;
+		padding: 2px 20px 3px 4px;
+		width: 140px;
+	 }
+	input.placehold {
+		color: #A79080;
+	 }
+	.sub-site-search button {
+		background: #EA8106;
+		border: 0;
+		border: none;
+		cursor: pointer;
+		line-height: 21px;
+		margin: 0;
+		overflow: hidden;
+		padding: 0;
+		padding-left: 2px;
+		vertical-align: text-bottom;
+		width: 27px;
+	 }
+	.sub-site-search button img {
+		border: none;
+		display: block;
+		margin: 0;
+		padding: 0;
+		vertical-align: text-bottom;
+	 }
+
+
+/*---------------------------------------------------------------------
+  DROP-SHADOW BOXES
+  For text blocks and image (with captions)
+  TODO: Separate into box and image sections, move inline image styling 
+  to text.css.
+-----------------------------------------------------------------------*/
+	div.boxed-text h3, legend {
+		color: #e07911;
+		font-size: 1em;
+		font-weight: bold;
+		margin: 8px 8px 16px 8px;
+		text-transform: uppercase;
+	 }
+	div.boxed-text, div.boxed-image, div.imageCaptioned {
+		margin: 8px 0 8px 0; 
+		position: relative; 
+		border: solid 1px #EFEFEF; 
+		padding: 8px; 
+		background: white; 
+		display: block; 
+		-moz-box-shadow: 0px 3px 4px #c5c5c5; 
+		-webkit-box-shadow: 0px 3px 4px #c5c5c5; 
+		box-shadow: 0px 3px 4px #c5c5c5; 
+		/* For IE 8 */ -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5')"; 
+		/* For IE 5.5 - 7 */ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5');
+	}
+	div.boxed-text {
+		margin-right: 0;
+	 }
+	div.boxed-text:after {
+	  content: "\0020";
+	  display: block;
+	  height: 0;
+	  clear: both;
+	  visibility: hidden;
+	  overflow:hidden;
+	 }
+	div.last > div.boxed-text {
+		margin-right: 8px;
+	 }
+	div.last > div.boxed-image, div.boxed-imagesm {
+		margin-right: 8px;
+	 }
+	div.left-col .boxed-text, div.full-width .boxed-text {
+		margin-left: 10px;
+		margin-right: 10px;
+	 }
+	div.full-width .boxed-text {
+		border-top: none;
+		margin-top: 0;
+	 }
+	div.boxed-image p {
+		margin: 0;
+		padding: 0;
+	 }
+	div.boxed-image p.caption, div.boxed-text p.caption {
+		font-size: .75em;
+		padding-top: 5px;
+	 }
+
+	div.small p.caption {
+		font-size: .9375em;
+		padding-top: 5px;
+	 }
+
+	img.boxed-image {
+		margin: 8px; 
+		display: block; 
+		position: relative; 
+		border: solid 1px #EFEFEF; 
+		padding: 8px !important; 
+		background: white; 
+		-moz-box-shadow: 0px 3px 4px #c5c5c5; 
+		-webkit-box-shadow: 0px 3px 4px #c5c5c5; 
+		box-shadow: 0px 3px 4px #c5c5c5; /* For IE 8 */ 
+		-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5')"; 
+		/* For IE 5.5 - 7 */ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5');
+	}
+	img.boxed-imagesm {
+		margin: 3px; 
+		display: block; 
+		position: relative; 
+		border: solid 1px #EFEFEF; 
+		padding: 3px !important; 
+		background: white; -moz-box-shadow: 0px 3px 4px #c5c5c5; 
+		-webkit-box-shadow: 0px 3px 4px #c5c5c5; 
+		box-shadow: 0px 3px 4px #c5c5c5; 
+		/* For IE 8 */ -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5')"; /* For IE 5.5 - 7 */ 
+		filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5');
+	}
+	p.feature-image {
+		margin: 0;
+		margin-top: 8px;
+	 }
+	p.feature-image img.boxed-image {
+		margin: 0 !important;
+	 }
+
+
+/*---------------------------------------------------------------------
+  CALL TO ACTION BUTTON LINK
+  Use CSS image replacement to display a standed size call to action
+  button.
+  TODO: Merge into a generic button class and declare background image
+  in the markup.
+-----------------------------------------------------------------------*/
+	/*REGISTER FALL SAMPLER BUTTON*/
+	a.buttonsampler {
+		background:url(buttonSampler.png) top right no-repeat;
+		padding-right:0;
+		background-position:right 5px;
+		color:#aec0b6;
+		width:245px;
+		height:56px;
+		display:block;
+		overflow:hidden;
+	}
+	a.buttonsampler:hover {
+		background-position:right -49px;
+		color:#aec0b6;
+	}
+	a.buttonsampler span {
+		margin-left:-9999px;
+	}
+	/*REQUEST VISIT BUTTON*/
+	a.buttonvisit {
+		background:url(buttonRequestVisit.png) top right no-repeat;
+		padding-right:0;
+		background-position:right 5px;
+		color:#aec0b6;
+		width:245px;
+		height:56px;
+		display:block;
+		overflow:hidden;
+	}
+	a.buttonvisit:hover {
+		background-position:right -49px;
+		color:#aec0b6;
+	}
+	a.buttonvisit span {
+		margin-left:-9999px;
+	}
+	/*SIGN UP BUTTON*/
+	a.buttonsignup {
+		background:url(button_signup.png) top right no-repeat;
+		padding-right:0;
+		background-position:right 5px;
+		color:#aec0b6;
+		width:245px;
+		height:56px;
+		display:block;
+		overflow:hidden;
+	}
+	a.buttonsignup:hover {
+		background-position:right -49px;
+		color:#aec0b6;
+	}
+	a.buttonsignup span {
+		margin-left:-9999px;
+	}
+	
+	
+	/*Department Ads*/
+	a.departmentads {
+		background:url(button_signup.png) top right no-repeat;
+		padding-right:0;
+		background-position:right 5px;
+		color:#aec0b6;
+		width:245px;
+		height:56px;
+		display:block;
+		overflow:hidden;
+	}
+	a.departmentads:hover {
+		background-position:right -49px;
+		color:#aec0b6;
+	}
+	a.departmentads span {
+		margin-left:-9999px;
+	}
+
+
+
+/*---------------------------------------------------------------------
+  "TOOLBOX"
+  Displays a background image, used throughout the site for related
+  links. Imposes a size restriction because of the static background
+  image.
+-----------------------------------------------------------------------*/
+	div.toolbox {
+		background:url(toolbox.png) no-repeat;
+		width:289px;
+		height:271px;
+		margin-left:-8px;
+		margin-top:25px;
+		margin-bottom:15px;
+	}
+	div.toolbox h3 {
+		text-indent:-9999px;
+	}
+	div.toolbox ul, div.selectedWorks ul {
+		list-style:none;
+		margin-left:40px;
+		margin-top:45px;
+		font-size: 0.9286em;
+	}
+	div.toolbox li, div.selectedWorks li {
+		list-style:none;
+		background:url(li_bullet.gif) 1px 9px no-repeat;
+		padding-left:8px;
+	}
+
+
+/*---------------------------------------------------------------------
+  RELATED PAGES CONTENT BOX
+  Displays a background image, used throughout the site for related
+  links. Imposes a size restriction because of the static background
+  image.
+-----------------------------------------------------------------------*/
+	.relatedpages {
+		padding: 2px 8px;
+		padding-left: 0px;
+		background-image: url(relatedpages-arrow.gif); 
+		background-repeat: no-repeat; 
+		margin-right: 8px; 
+		margin-top: 8px;
+		border: 1px #aec0b6 solid;
+	}
+	.relatedpages h3 {
+		padding-left: 8px;
+	}
+	.boxed-text .relatedpages h3, .relatedpages h3 {
+		margin-bottom: 30px;
+		color: #fff !important;
+	}
+	.relatedpages ul {
+		list-style: none;
+		margin: 0;
+		padding-left: 8px;
+	}
+	.relatedpages li {
+		padding-bottom: 8px;	
+	}
+
+/*---------------------------------------------------------------------
+  MOVIE PLAYER CONTAINER
+-----------------------------------------------------------------------*/
+	.movie {
+		/*background: url(/resources/web-imgs/videobackground.gif) top left repeat-x #baa79a; */
+		/*background: white;
+		padding: 8px; */
+		margin: 8px 9px 0 0;
+	}
+	.movie h3 {
+		padding-bottom: 15px;
+		color: #E07911
+	}
+
+
+
+/*---------------------------------------------------------------------
+  PERSON LISTING DEFAULT STYLE
+-----------------------------------------------------------------------*/
+	ul.staffListing {
+		margin: 0; 
+		padding: 0;
+	}
+	ul.staffListing li {
+		width: 310px;
+		min-height: 200px;
+		border: 1px solid #000;
+		border: none;
+		display: -moz-inline-stack;
+		display: inline-block;
+		vertical-align: top;
+		margin: 5px;
+		zoom: 1;
+		*display: inline;
+		_height: 250px;
+	}	
+	ul.staffListing li p {
+		padding-left: 110px; 
+		font-size: 12px;
+	}
+	ul.staffListing li img {
+		float: left; 
+		margin-left: -120px; 
+		margin-top: 0; 
+		zoom: 1;
+	}
+
+
+
+/*---------------------------------------------------------------------
+ DEPARTMENT ADS 3 ACROSS
+-----------------------------------------------------------------------*/
+	ul.departmentad {
+		margin: 0; 
+		padding: 0;
+	}
+	ul.departmentad li {
+		width: 215px;
+		min-height: 200px;
+		border: 1px solid #000;
+		border: none;
+		display: -moz-inline-stack;
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 2px;
+		zoom: 1;
+		*display: inline;
+		_height: 250px;
+	}
+	
+
+/*---------------------------------------------------------------------
+  PERSON LISTING 3-COLUMN STYLE
+-----------------------------------------------------------------------*/
+	ul.staffListing2 strong.fn {
+		font-size: 1.1em;
+	}
+	ul.staffListing2 a.email {
+		font-weight: normal !important;
+	}
+	ul.staffListing2, ul.staffListing2 li {
+		list-style:none; margin: 0; padding: 0;
+		}
+	ul.staffListing2 li {
+		width: 205px; 
+		float: left; 
+		height: 240px; /*NBR 2011-12-13:changed from 280px;*/
+		font-size: .9em; 
+		padding-left: 8px;
+		
+	}
+	ul.staffListing2 li img {
+		margin-left: 0 !important
+	}
+	ul.studentList li {
+		height: 200px;
+	}
+	ul.staffListing2 p {
+		margin: 0;
+		padding: 0;
+	}
+
+
+/*---------------------------------------------------------------------
+  PERSON LISTING SINGLE COLUMN STYLE
+-----------------------------------------------------------------------*/
+	ul.columnsingle { 
+		margin: 0; 
+		padding: 0;
+		list-style: none;
+	}
+	ul.columnsingle li {
+		list-style: none;
+		clear: left;
+		padding-bottom: 10px;
+		margin-left: 148px;
+		position: relative;
+		min-height: 135px;
+		_height: 135px;
+	}
+	ul.columnsingle li:after {
+	  content: "\0020";
+	  display: block;
+	  height: 0;
+	  clear: both;
+	  visibility: hidden;
+	  overflow:hidden;
+	}
+	ul.columnsingle span.photo {
+		display: block; 
+		position: absolute;
+		top: -5px;
+		left: -148px;
+	}
+	ul.columnsingle .fn {
+		
+	}
+	
+	ul.columnsingle a.email {
+		font-weight: normal !important;
+	}
+	
+	/* Override for nexted lists */
+	ul.columnsingle li ul {
+		margin: 8px 32px; 
+		padding: 0;
+		list-style: disc;
+	}
+	ul.columnsingle li li {
+		list-style: disc;
+		clear: none;
+		padding-bottom: 0;
+		margin-left: 0;
+		min-height: 0;
+	}
+	ul.columnsingle li li:after {
+		content: none;
+	}
+/*---------------------------------------------------------------------
+  GRID DISPLAY FOR TEXTUAL LIST ITEMS
+-----------------------------------------------------------------------*/
+	ul.columnListing {
+		margin: 0; 
+		padding: 0;
+	}
+	ul.columnListing li {
+		width: 150px;
+		min-height: 200px;
+		border: 1px solid #000;
+		border: none;
+		display: -moz-inline-stack;
+		display: inline-block;
+		vertical-align: top;
+		margin: 5px;
+		zoom: 1;
+		*display: inline;
+		_height: 250px;
+	}
+	
+
+
+/*---------------------------------------------------------------------
+  HOMEPAGE NEWS FEED
+  TODO: Determine how this is different from general purpose news feed,
+  merge if possible. Otherwise, moved to a homepage-specific CSS file.
+-----------------------------------------------------------------------*/
+	div#frontPageNewsFeed {
+		margin-right: 8px;
+		margin-top: 16px;
+	 }
+	div#frontPageNewsFeed h3 {
+		/*border-top: solid 1px #b9a698;*/
+		color: #e07911;
+		font-size: 1em;
+		font-weight: bold;
+		margin-right: 8px;
+		padding: 8px;
+		text-transform: uppercase;
+		padding-bottom: 16px;
+	 }
+	div#frontPageNewsFeed ul {
+		list-style: none;
+		margin: 0 8px;
+		padding: 0;
+	 }
+	div#frontPageNewsFeed li {
+		list-style: none;
+	 }
+
+
+/*---------------------------------------------------------------------
+  GENERAL PURPOSE NEWS FEED
+  TODO: Determine how this is different from homepage news feed,
+  merge if possible.
+-----------------------------------------------------------------------*/
+	div.newsFeed {
+		margin: 16px 0 16px 0;
+	 }
+	div.newsFeed h3 {
+		/* border-top: solid 1px #b9a698; */
+		color: #e07911;
+		font-size: 1em;
+		font-weight: bold;
+		margin-right: 8px;
+		padding: 8px;
+		text-transform: uppercase;
+	 }
+	div.newsFeed ul {
+		list-style: none;
+		margin: 0 8px;
+		padding: 0;
+	 }
+	div.newsFeed li {
+		list-style: none;
+	 }
+  
+
+
+/*---------------------------------------------------------------------
+  NEWS LISTING
+  TODO: Determine if all the styles below are needed, removed extras.
+  (newsGrid is for the news site, newsListing is for lists in other
+   areas of the website)
+-----------------------------------------------------------------------*/
+	ul.newsListing {
+		margin: 0; 
+		padding: 0;
+		padding-top: 16px;
+	}
+	ul.newsListing li {
+		width: 300px;
+		min-height: 95px;
+		display: -moz-inline-stack;
+		display: inline-block;
+		vertical-align: top;
+		margin: 5px;
+		zoom: 1;
+		*display: inline;
+		_height: 250px;
+		font-family:"Adobe Garamond Pro",garamond,"times new roman",serif;
+		font-size:16px;
+		font-weight:normal;
+		line-height:1.375em;
+		margin:0;
+		padding:0;
+		text-transform:none;
+		padding-right: 2.6%; 
+		padding-bottom: 0;
+		width: 46%;
+		float: left;
+	}		
+	
+	ul.newsListing li a:link, ul.newsListing li a:visited, ul.newsListing li a:hover {
+		color: #424242
+	}
+	.span-7 ul.newsListing li {
+		width: 95%;
+		float: none;
+		_height: auto;
+	}
+		
+	/* News section update 10/18/2010 ZB */
+	ul.newsGrid p.newsThumb {
+		padding-bottom: 4px; 
+		margin-bottom:0px;
+	}
+	ul.newsGrid p.newsThumb img {
+		margin-left: 0;
+	}
+	ul.newsGrid p.articleLeadIn {
+		font-size: .9em; 
+		margin-top: 0; 
+		padding-top: 0;
+	}
+	
+	
+/*---------------------------------------------------------------------
+  "COLLEGE NEWS" LISTING (BLOG STYLE)
+-----------------------------------------------------------------------*/
+	div.collegeNews p {
+		margin-bottom: 0; 
+		padding-bottom: 0;
+	}
+	div.collegeNews div.newsItem {
+		padding-bottom: 15px;
+	}
+
+
+/*---------------------------------------------------------------------
+  NEWS TOPIC/CATEGORY SELECTION LIST
+  TODO: Merge with topic list below to create a unified list style for
+  events and news.
+-----------------------------------------------------------------------*/
+	ul.newsTopicList, ul.newsTopicList ul, ul.newsTopicList li {
+		list-style: none; 
+		margin: 0; 
+		padding: 0;
+	}
+	ul.newsTopicList li {
+		padding-left: 8px; 
+		margin-top: 10px;
+	}
+	ul.newsTopicList ul{
+		list-style: square; 
+		font-size: .85em; 
+		padding-left: 0; 
+		padding-top: 4px; 
+	}
+	ul.newsTopicList ul li {
+		padding-left: 7px; 
+		padding-right: 8px;
+		margin-top: 0; 
+		background: url(li_bullet.gif) left 8px no-repeat;
+	}
+
+
+/*---------------------------------------------------------------------
+  TOPIC/CATEGORY SELECTION LIST FOR EVENTS CALENDAR
+  TODO: Merge with topic list above to create a unified list style for
+  events and news.
+-----------------------------------------------------------------------*/
+	ul.topicList {	
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		font-size: .9em;
+		margin-left: -13px;
+	}
+	ul.topicList li {
+		list-style: none;
+		margin: 0; padding: 0;
+		padding-left: 8px;
+	}
+	ul.topicList a, ul.topicList a:visited, ul.topicList a:hover {
+		display: block; 
+		padding: 2px 5px; 
+		padding-left: 15px;
+	}
+	ul.topicList a:hover {
+	}
+	ul.topicList li.selected {
+		background: url(arrow_categories.png) top left no-repeat; 
+		padding-left: 8px;
+		margin-left: -4px;
+	}
+	
+	ul.topicList li.selected a{
+		background: #EA8106; 
+		color:#FFF; 
+		font-weight: bold;
+		padding-left: 19px;
+	}
+	ul.topicList li {
+		padding-bottom: .15em;
+	}
+	ul.topicList a, ul.topicList a:link, ul.topicList a:visited, ul.topicList a:hover {
+		color: #686868; 
+		font-size: 1em;
+	}
+	div.topicSelect h3 {
+		margin-bottom: 8px; 
+		text-align: left;
+	}
+	ul.topicList {
+		padding-bottom: 5px;
+	}
+
+
+/*---------------------------------------------------------------------
+  SLIDE OUT FEEDBACK FORM
+  Not used on the site anymore, preserve for special project use.
+-----------------------------------------------------------------------*/
+	.slide-out-div {
+		padding: 20px 15px 0 15px;
+		width: 300px;
+		background: #FFF;
+		border: 1px solid #6E4F7B;
+		border-top-color: #A283AF;
+		z-index: 9999;
+	}    
+	  
+
+/*---------------------------------------------------------------------
+  NOTE PAD TEXT BOX WITH "READ-THIS" HEADING
+  
+-----------------------------------------------------------------------*/
+	div.readThis {
+		background: url(notepad_bottom.gif) bottom left no-repeat;
+		padding-bottom: 20px;
+	}
+
+	div.readThis h3.noteTitle {
+		background: url(notepad_top.gif) top left no-repeat;
+		text-indent: -9999px;
+		width: 264px;
+		height: 63px;
+	}
+	
+	div.readThis div.readThisBody {
+		background: url(notepad_middle.gif) top left repeat-y;
+		padding: 1px 20px 1.6em 15px;
+	}
+	
+	div.readThisBody p, div.readThisBody h3, div.readThisBody h4, div.readThisBody h6 {
+		
+		line-height: 16px;
+		padding-bottom: 16px;
+		padding-top: 0;
+		margin: 0;
+	}
+	
+	div.readThisBody h3 {
+		margin-top: 16px;
+		color: #ea8106;
+	}
+	
+	div.readThisBody ul {
+		margin: 0 16px;
+	}
+	
+	div.readThisBody ul li{
+		line-height: 16px;
+		padding-bottom: 16px;
+	}
+/*---------------------------------------------------------------------
+  DELICIOUS FEEDS
+  TODO: Move to separate, page-specific CSS file
+-----------------------------------------------------------------------*/	  
+	.delicious-posts {  
+		margin-left: 8px; 
+		margin-right: 8px; 
+		font-family: "Helvetica Neue", Arial, Helvetica,  sans-serif;  
+		line-height: 1.5714286em; 
+		color: #333; 
+		padding-bottom: 0; 
+		margin-bottom: 1.5714286em; 
+	}
+	.delicious-posts li {
+		margin-bottom:1em !important; 
+		margin-top:1em !important;
+	}
+	.delicious-posts ul, .delicious-posts li, .delicious-banner { 
+		margin:0; 
+		padding: 0; 
+		list-style:none; 
+	}
+	.delicious-post { 
+		border-top: none; 
+		padding: 0;  
+	}
+	.delicious-odd { 
+	}
+	.delicious-banner {
+		display:none;
+	}
+	a.delicious-link:hover {
+		background-position: right -30px; 
+		color: #C93;
+	}
+	a.delicious-link { 
+		text-decoration: none; 
+		padding: 0em; 
+		background: url(/resources/web-imgs/ico_external.png) top right no-repeat; 
+		padding-right: 19px; 
+		background-position: right 0; 
+		color: #d47b22; 
+		font-weight: bold; 
+		text-transform: none; 
+	}
+	.delicious-extended {
+		margin-left:10px; 
+		font-size:1em !important;
+	}
+	a.delicious-tag {
+		display:block; 
+		clear:left;
+	}
+	ul.delicious-cloud {
+	}
+
+
+/*---------------------------------------------------------------------
+  EVENTS CALENDAR STYLING
+  TODO: Move separate CSS file
+-----------------------------------------------------------------------*/
+	
+	tr.eventTime {
+		text-align: right;
+	}
+	.eventTable td, .eventTable th {
+		border: none;
+	}
+	.eventTable th {
+		padding-top: 10px;
+	}
+	.eventTable tr.odd td {
+		background-color: #EFEFEF;
+	}
+	.event-calendar-sm {
+		text-align: center; 
+		margin-top: 20px;
+	}
+	.event-calendar-sm table, .event-calendar-sm h3 { 
+		text-align: center; 
+		margin-left: auto; 
+		margin-right: auto;
+	}
+	div.event-calendar-sm h3 {
+		margin: 5px 0 0 0;
+	}
+	div.event-calendar-sm h3 a {
+		font-size: 1.3em;
+	}
+	.event-calendar-sm table {
+		border: none; 
+		margin-top: 2px;
+	}
+	.event-calendar-sm td, .event-calendar-sm th {
+		border: none; 
+		padding: 1px; 
+		font-size: .8em; 
+		text-align: center;
+	}
+	.event-calendar-sm td a {
+		display: block; 
+		margin: 0; 
+		color:#333; 
+		background: #E8DBD7; 
+		padding: 0 1px; 
+		text-align: center; 
+		border: solid 1px #E8DBD7; 
+		width: 1.6em;
+	} 
+	.event-calendar-sm th {
+		padding-bottom: 0;
+	}
+	.event-calendar-sm td.selected a {
+		background: #7E6787; 
+		border-color: #7E6787; 
+		color: white;
+	}
+	.event-calendar-sm a:hover {
+		background: none;
+	}
+	/* Prev/Next links */
+	p.backForward {
+		text-align: center; 
+		padding-top: 10px;
+	}
+	p.backForward span {
+		display: inline-block; 
+		width: 40%; 
+		text-align: left; 
+		padding-left:2px; 
+	}
+	p.backForward span.back {
+		text-align: right; 
+		margin-left: 0; 
+		padding-right: 4px;
+		/* border-right: solid 1px #b3bd94;*/ 
+		background: url(prevNextSep.gif) right 5px no-repeat;
+	}
+	p.backForward a {
+		display: inline-block; 
+		/*border: solid 1px #96A672;*/ 
+		background: url(../images/arrowBigRight.gif) no-repeat;  
+		background-position: right 5px;
+	}
+	p.backForward a:hover {
+		text-decoration: underline
+	}
+	p.backForward a.next {
+		text-align: center; 
+		padding: 3px 19px 5px 10px;
+	}
+	p.backForward a.prev {
+		text-align: center; 
+		padding: 3px 10px 5px 19px; 
+		background-image: url(../images/arrowBigLeft.gif); 
+		background-position: left 5px;
+	}
+	a.buttoneventsubmit {
+		background: url(button_submitevent.png) top right no-repeat; 
+		padding-right: 0; 
+		background-position: right 5px; 
+		color: #aec0b6; 
+		width: 245px; 
+		height: 56px; 
+		display: block; 
+		overflow: hidden;
+	}
+	a.buttoneventsubmit:hover {
+		background-position: right -49px; 
+		color: #aec0b6;
+	}
+	a.buttoneventsubmit span {
+		margin-left: -9999px;
+	}
+	
+	
+/*---------------------------------------------------------------------
+  DEPARTMENT CONTACT INFORMATION FOR LEFT COLUMN OF DEPT SITES
+-----------------------------------------------------------------------*/
+  address.contactInfo {
+    font-size: 12px;
+    font-style: normal;
+    margin: 8px;
+	margin-bottom: 16px;
+    line-height: 1.57143em;
+	padding-top: 16px;
+	clear: left;
+  }
+
+  address.contactInfo strong {
+    text-transform: uppercase;
+    font-size: 1em;
+  }
+  
+  
+/*---------------------------------------------------------------------
+  EVENTS LISTING WITH CALENDAR DISPLAY
+-----------------------------------------------------------------------*/
+
+.eventsUpcoming h2 {
+	font-size: 2em;
+	margin-top: 8px;
+	margin-bottom: 16px;
+}
+ 
+.eventsUpcoming ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.eventsUpcoming li {
+	clear: both;
+ 
+}
+.eventsUpcoming ul a:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  overflow:hidden;
+}
+ 
+.eventsUpcoming ul a {
+	display: block;
+	color: #373737;
+	font-family: "Adobe Garamond Pro", garamond, "times new roman", serif;
+	font-size: 16px;
+	padding: 8px;
+	border-bottom: solid 1px #BDCDC5;
+}
+ 
+.eventsUpcoming ul li:last-child a {
+	border-bottom: 0;
+}
+ 
+.eventsUpcoming ul a:hover {
+	background-color: #CFDAD4;
+	text-decoration: none;
+}
+.eventsUpcoming span.date {
+	display:block;
+	text-align: center;
+	float:left;
+	font-family: Arial, Helvetica, sans-serif;
+	border-bottom:none;
+	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 2px 5px 3px 5px;
+	width: 30px;
+	background: url(/resources/v2/web-imgs/eventListDate.png) 1px 0px no-repeat;
+	color: #FFF;
+	margin-right: 8px;
+}
+.eventsUpcoming span.month {
+	display:block;
+	font-size: 11px;
+	margin:0;
+	padding:0;
+	line-height: 16px;
+}
+.eventsUpcoming span.day {
+	display:block;
+	font-size:12px;
+	margin:0;
+	padding:0;
+	line-height: 16px;
+}
+.eventsUpcoming span.eventName {
+	line-height: normal;
+}
+
+.eventsUpcoming .eventDescription {
+	font-size: .75em;
+	line-height: 1.5em;
+	/*clear: left;*/
+	display: block;
+	padding-top: 4px;
+	margin-left: 49px;
+	color: #838383;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+.eventsUpcoming .eventDescription p {
+	margin: 0;
+	padding: 0;
+}
+ 
+.eventsUpcoming p.moreEvents {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	margin: 8px -8px -8px -8px;
+}
+ 
+.eventsUpcoming p.moreEvents a {
+	display: block;
+	background: #4B3552;
+	color: #FFF;
+	font-weight: bold;
+	padding: 3px 16px 3px 16px;
+}
+ 
+
+
+/*---------------------------------------------------------------------
+  EXPERIMENTAL
+-----------------------------------------------------------------------*/
+  
+  	blockquote.excerpt {
+		margin: 0; 
+		font-style: normal;
+	}
+  	blockquote.excerpt p {
+		color: #3F3F3F;
+		font-size: .9286em;
+	}
+	blockquote {
+		margin: 0;
+	}
+	
+	div.toolbox2 {
+		background:url(toolbox.png) no-repeat;
+		width:289px;
+		height:271px;
+		margin-left:-8px;
+		margin-top:25px;
+		margin-bottom:15px;
+	}
+	div.toolbox2 h3 {
+		text-indent:-9999px;
+	}
+	div.toolbox2 ul {
+		list-style:none;
+		margin-left:40px;
+		margin-top:35px;
+	}
+	div.toolbox2 li {
+		list-style:none;
+		background:url(li_bullet.gif) 1px 9px no-repeat;
+		padding-left:8px;
+		font-size: .9286em;
+	}
+    
+    
+    div.imageCaptioned p {
+        margin: 0;
+        padding: 0;
+        font-size: .8571em;
+    }
+    div.imageCaptioned img {
+        padding-bottom: 8px;
+    }
+    
+    p.audioPlayer strong {
+     	display:block;
+     	padding-left: 24px;
+     	background: url(ico_video.png) top left no-repeat transparent;
+     	padding-bottom: 3px;
+	}
+	p.audioPlayer small {
+    	display:block;
+     	padding: 3px;
+	}
+	p.audioPlayer a {
+    	font-weight: normal; 
+	}
+  ​
+	p.flush-image {
+		margin: 0;
+		padding: 0;
+	}
+	
+/*---------------------------------------------------------------------
+  PROFILE SELECTED WORKS
+-----------------------------------------------------------------------*/
+
+	div.selectedWorks {
+		/* Applided .colorblock style */
+	}
+	div.selectedWorks h2 {	
+	}
+	div.selectedWorks ul {
+		 /*Applided .toolbox style */
+		 margin: 0px 40px 16px 16px;
+	}
+	div.selectedWorks li {
+		
+	}
+    
+
+	
+	/*---------------------------------------------------------------------
+  CALL TO ACTION BUTTONS
+-----------------------------------------------------------------------*/
+	a.action-btn, a.action-btn:link, a.action-btn:hover, a.action-btn:active, a.action-btn:visited {
+		background: url(/resources/v2/web-imgs/button-blue.png) top left no-repeat;
+		padding:0;
+		width:220px;
+		height:48px;
+		line-height: 48px;
+		display:block;
+		overflow:hidden;
+		margin: 16px 16px 0px 0px;
+		color: white;
+		text-transform: uppercase;
+		text-align: center;
+		font-weight: bold;
+		font-size: 12px;
+		white-space:nowrap;
+		text-shadow: 1px 1px 1px #666666;
+	}
+	a.action-btn:hover {
+		background-position:right -48px;
+		text-decoration: none;
+	}
+	a.action-btn.green {
+		background-image: url(/resources/v2/web-imgs/button-green.png);
+	}
+	
+	a.action-btn.purple {
+		background-image: url(/resources/v2/web-imgs/button-purple.png);
+	}
+	
+	a.action-btn.arrow {
+		background-image: url(/resources/v2/web-imgs/button-blue-arrow.png) !important;
+		padding-right: 20px;
+		width: 200px;
+	}
+	a.action-btn.green.arrow {
+		background-image: url(/resources/v2/web-imgs/button-green-arrow.png) !important;
+	}
+	a.action-btn.purple.arrow {
+		background-image: url(/resources/v2/web-imgs/button-purple-arrow.png) !important;
+	}
+
+/*---------------------------------------------------------------------
+  HOVER ADS
+-----------------------------------------------------------------------*/
+a.hover-ad, a.hover-ad:link, a.hover-ad:hover, a.hover-ad:active, a.hover-ad:visited {
+		background-image: url(/resources/v2/web-imgs/hover-ad.png);
+		background-repeat: no-repeat;
+		padding: 0;
+		margin: 0;
+		background-position: right -5px; 
+		width: 221px; 
+		height: 198px; 
+		display: block; 
+		overflow: hidden;
+		position: relative;
+		white-space:nowrap;
+	}
+	a.hover-ad:hover {
+		background-position: right -202px; 
+		color: #aec0b6;
+		text-decoration: none;
+	}
+	a.hover-ad img {
+		width: 208px;
+		height: 154px;
+		margin-top: 3px;
+		margin-left: 8px;
+		position: absolute;
+	}
+	a.hover-ad:hover img {
+		clip:rect(0px,208px,152px,0px);
+	}
+	a.hover-ad span {
+		display:block;
+		position: absolute;
+		bottom: 14px;
+		text-transform: uppercase;
+		font-weight: normal;
+		font-size: .8em;
+		letter-spacing: .1em;
+		color: white;
+		padding: 3px 44px 0px 16px;
+	}
+	a.hover-ad:hover span {
+		bottom: 16px;
+	}
+	
+	
+/*---------------------------------------------------------------------
+	VIDEO LIST (WRITE WELL)
+-----------------------------------------------------------------------*/
+ul.videoList{
+	margin: 0;
+	padding: 0;
+}
+
+ul.videoList li{
+	list-style:none;
+	border-bottom: solid 1px #D4C9C0; 
+	padding: 5px 0 0 0;
+	min-height: 80px;
+	margin: 0;	
+}
+
+p.videoListThumb{
+	margin:0;
+	padding: 0;	
+	float: left;
+}
+
+h4.videoListTitle {
+	font-family:"Adobe Garamond Pro",garamond,"times new roman",serif;
+	font-size:18px;
+	font-weight:normal;
+	line-height:1.375em;
+	text-transform: none;
+}
+
+h4.videoListTitle a:link, h4.videoListTitle a:visited, h4.videoListTitle a:hover {
+	color: #424242
+}
+	
+h4.videoListTitle img {	
+		margin: 0;
+		padding: 0 0 0 4px;
+		vertical-align: text-bottom;
+}
+	
+p.videoListTopic, p.videoListProf{
+	margin:0;
+	font-size: 12px;
+	color: #999;
+}
+
+a.playVideo {
+	display:block; 
+	width:60px; 
+	height: 60px; 
+	padding: 3px; 
+	margin-right: 10px;
+	position:relative; 
+	overflow:hidden; 
+	background: url(/resources/v2/web-imgs/defaultVideoThumbnail60.gif) 3px 3px no-repeat white; line-height:60px; 
+	vertical-align: bottom; 
+	border: solid 1px #E5DED8; 
+	-moz-box-shadow: 0 3px 4px #c5c5c5; 
+	-webkit-box-shadow: 0 3px 4px #c5c5c5; 
+	box-shadow: 0 3px 4px #c5c5c5;
+	/* For IE 8 */ -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5')"; 
+	/* For IE 5.5 - 7 */ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5');
+}
+	
+a.playVideo span { 
+	background: url(/resources/v2/web-imgs/videoThumbnailOverlay.png) top left no-repeat transparent; 
+	position: absolute; 
+	top: 3px; 
+	left: 3px; 
+	width: 60px; 
+	height: 60px; 
+	overflow: hidden; 
+	text-indent: -9999px;
+}
+
+a.playVideo:hover span {
+	background-position: 0 -60px;
+	}
+	
+	
+div.figure {
+text-align: center;
+margin-bottom: 1.5em;
+}
+div.figure.left {
+float:left;
+}
+div.figure.left, div.figure.right {
+margin: 8px 0 8px 0; 
+		position: relative; 
+		border: solid 1px #EFEFEF; 
+		padding: 8px; 
+		background: white; 
+		display: block; 
+		-moz-box-shadow: 0px 3px 4px #c5c5c5; 
+		-webkit-box-shadow: 0px 3px 4px #c5c5c5; 
+		box-shadow: 0px 3px 4px #c5c5c5; 
+		/* For IE 8 */ -ms-filter: &quot;progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5')&quot;; 
+		/* For IE 5.5 - 7 */ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#c5c5c5');
+}
+div.figure.right {
+float:right;
+}
+div.figure p {
+margin-bottom: 0;
+}
+p.figcaption {
+font-size:0.75em;
+  padding-top:5px;
+}
+
+
+div.contentsList {width: 50%; margin: 25px 15px 30px 12px;}
+
+div.contentsList ul, div.contents li {list-style: none; margin: 0px; padding: 0px;}
+
+div.contentsList ul { border: 1px dashed #C0C0C0; padding: 15px;}
+
+div.contentsList ul ul {border: none; padding: 0px; padding-left: 20px;}
+
+
+.rssBody ul{
+	margin: 0 8px 0 8px;
+}
+.rssBody h4{
+	text-transform: none;
+	font-weight: bold;	
+	font-size: 1em;
+}
+li.rssRow{
+	list-style: none;
+	margin-bottom: 20px;
+}
+li.rssRow div{
+	font-style: italic;
+	font-size: 0.9em;
+}	
+
+
+/*---------------------------------------------------------------------
+	ORDERED LISTS
+-----------------------------------------------------------------------*/
+
+ol.lowerAlpha{
+	list-style-type: lower-alpha;	
+}
+
+ol.upperAlpha{
+	list-style-type: upper-alpha;	
+}
+
+ol.lowerRoman{
+	list-style-type: lower-roman;	
+}
+
+ol.upperRoman{
+	list-style-type: upper-roman;
+}

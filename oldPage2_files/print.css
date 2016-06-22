@@ -1,0 +1,28 @@
+body {background: none !important; background-color: transparent !important;}
+ul#mainNav, div#tasks, div#audienceBar, div#footer, div.subSiteMenu, div.toolbox, div#happenings, div#galleryContainer, div.addressBlock, address.contactInfo, div#quickLinks, div.newsFeed, div.share {display: none;}
+div#body, div.documentDesc, div.documentDescFull {background: none !important; background-color: transparent !important; border: none; border-width: 0px; margin: 0px; width: auto;}
+div.documentHead {background: none !important; background-color: transparent; border: none;}
+div.mainBlock, div#docBody {background: none !important; background-color: transparent !important;}
+div.documentDesc {margin: 0px; background: none;}
+div.documentDesc h1, div.documentDesc h2 {color: #181818; text-shadow: none;}
+div.boxed-text {border: none; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; background: none;}
+div.navBar {width: auto; background: none;}
+div#header {height: auto; background: none;}
+div#macWordmark {width: auto; padding: 0px; margin: 0px; background: none;}
+div#macWordmark h1 {background: none; margin: 0px auto; padding: 0px;}
+div#macWordmark h1 a {text-indent: 0px; width: auto;color: #181818; font-size: .6em; font-weight: normal; line-height: normal; background: none;}
+div#macWordmark h1 a:link:after, div#macWordmark h1 a:visited:after {content:"" }
+div.boxed-text h3 {color: #030303}
+table, td, th {
+		border-bottom: 1px solid #d4c9c0;  
+		vertical-align:top;
+		border-collapse: collapse;
+	}
+th, td, caption {
+    padding: 2px 8px 2px 5px;
+}
+div.pageCrumbs ul {margin: 0; padding: 0; list-style: none; clear: both;}
+div.pageCrumbs li {float: left; margin: 0; padding: 0; padding-right: .8em; font-size: 11pt; color:#222222; margin-top: 1em;}
+div.pageCrumbs li:before {content: "> ";}
+h1 {clear:left;}
+div.pageCrumbs a:link:after, div.pageCrumbs a:visited:after {content:"" }
