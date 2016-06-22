@@ -24,7 +24,7 @@ function loadTable(data){
             { title: "Location" },
             { title: "Professor" },
             { title: "Space" },
-            { title: "Gen. Ed."},
+            { title: "Gen. Ed.", "width": "1px"}, //Column will auto-expand to minimum size needed to fit smallest word
             { title: "Qs" , "visible": false },
             { title: "GenEdTags" , "visible": false },
             { title: "CRN" , "visible": false}
@@ -47,13 +47,17 @@ function search(){
 $(document).ready(function(){
     var miscRow=$("#miscOptions");
     var row="<td>";
+    row+="<div class=check-button><label>";
     row+='<input type="checkbox" onchange="labsToggle()"> ';
-    row+="Hide labs</td>";
+    row+="<span>";
+    row+="Hide labs</span></label></div></td>";
     miscRow.append(row);
 
     row="<td>";
+    row+="<div class=check-button><label>";
     row+='<input type="checkbox" onchange="fullToggle()"> ';
-    row+="Hide full classes</td>";
+    row+="<span>";
+    row+="Hide full classes</span></label></div></td>";
     miscRow.append(row);
 });
 

@@ -48,8 +48,9 @@ $(document).ready(function(){
 		for(j=0; j<perRow && i+j<departments.length; j++){
 			var dept=departments[i+j];
 			row+="<td>";
+			row+="<div class=check-button><label>";
 			row+='<input type="checkbox" onchange="deptToggle(this.value)" value='+dept[0] +'> ';
-			row+=dept[1]+"</td>";
+			row+="<span>"+dept[1]+"</span></label></div></td>";
 		}
 		row+="</tr>"
 		deptTable.append(row);

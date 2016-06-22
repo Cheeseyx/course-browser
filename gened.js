@@ -11,14 +11,16 @@ $(document).ready(function(){
 	var genEdBox=$("#gened");
 	for(i=0; i<genEdData.length; i++){
 		var button="<td>";
+		button+="<div class=check-button><label>";
 		button+='<input type="checkbox" onchange="genEdToggle(this.value)" value='+genEdData[i][0] +'> ';
-		button+=genEdData[i][1] +"</td>";
+		button+="<span>"+genEdData[i][1] +"</span></label></div></td>";
 		genEdBox.append(button)
 	}
 
 	var type="<td>";
-	type+='<input type="checkbox" onchange="typeToggle()"> ';
-	type+="Show only classes meeting all Gen. Ed. Requirements </td>";
+	type+="<div class=check-button><label>";
+	type+='<input type="checkbox" onchange="typeToggle()"><span>';
+	type+="Show only classes meeting all Gen. Ed. Requirements </span></label></div></td>";
 	$("#miscOptions").append(type);
 
 });

@@ -11,8 +11,12 @@
 	background-color: #f9f9f9;
 }
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+.table-hover tbody tr:hover td{
 	background-color: #c9c9c9;
+}
+
+.table-striped tbody .details:hover td{
+	background-color: #cfcfcf;
 }
 
 h3.short-margin{
@@ -41,4 +45,38 @@ button.button-selected{
 
 button.button-selected:hover{
 	background-color: #b0f9b0;
+}
+
+.check-button{
+    margin:1px;
+    background-color:#c7c7c7;
+    border-radius:4px;
+    border:1px solid #b0b0b0;
+    overflow:auto;
+    float:left;
+    transition-duration: 0.4s;
+}
+
+
+.check-button:hover {
+    background-color: #f0f0f0;
+}
+
+.check-button label {
+    float:left;
+}
+
+.check-button label span {
+    text-align:center;
+    padding: 5px;
+    display:block;
+}
+
+.check-button label input {
+	display: none;
+}
+
+.check-button input:checked + span {
+    background-color:#89d989;
+    border-color: #70c070;
 }
