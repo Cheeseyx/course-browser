@@ -1,8 +1,15 @@
-//File generated on2016/06/22 06:07:10
+//File generated on 2016/06/22 09:42:39
+$(document).ready(function(){
+    var button='<button id=button2016spring onClick=load2016spring()>';
+    button+='Spring 2016';
+    button+='</button>';
+    $('#buttons').append(button); 
+});
 function load2016spring(){
     table.destroy();
     loadTable(courses2016spring);
     addDetails();
+    selectTable('2016spring')
 }
 var courses2016spring = [
 ['<span id=AMST101-01 CRN=0 >AMST</span>','101-01','Explorations of Race and Racism','W','07:00 pm - 10:00 pm','NEILL 213',"Duchess Harris",'0/20','','0','','0'],

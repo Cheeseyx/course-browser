@@ -1,8 +1,15 @@
-//File generated on2016/06/22 06:07:11
+//File generated on 2016/06/22 09:42:40
+$(document).ready(function(){
+    var button='<button id=button2016fall onClick=load2016fall()>';
+    button+='Fall 2016';
+    button+='</button>';
+    $('#buttons').append(button); 
+});
 function load2016fall(){
     table.destroy();
     loadTable(courses2016fall);
     addDetails();
+    selectTable('2016fall')
 }
 var courses2016fall = [
 ['<span id=AMST103-01 CRN=10676 >AMST</span>','103-01','Problems of Race in US Social Thought and Policy','MWF','09:40 am - 10:40 am','NEILL 409',"Karin Aguilar-San Juan",'16/16','U.S. Identities, Writing A','0','USID,WA,','10676'],

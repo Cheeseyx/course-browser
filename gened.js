@@ -3,7 +3,7 @@ var genEdData = [
 	["Q", "Quantitative Thinking"],
 	["USID", "U.S. Identities and Differences"],
 	["WA", "Writing A"],
-	["WC", "Writing P"],
+	["WC", "Writing C"],
 	["WP", "Writing P"]
 ];
 
@@ -18,7 +18,7 @@ $(document).ready(function(){
 
 	var type="<td>";
 	type+='<input type="checkbox" onchange="typeToggle()"> ';
-	type+="Require all Gen Ed categories </td>";
+	type+="Show only classes meeting all Gen. Ed. Requirements </td>";
 	$("#miscOptions").append(type);
 
 });

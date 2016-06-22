@@ -56,9 +56,9 @@ a.materials img {
 <script src="macalester/analytics.js" async=""></script><script type="text/javascript" src="macalester/gaq.js"></script><style type="text/css">:root #header + #content > #left > #rlblock_left
 {display:none !important;}</style>
 
+
  <!-- Custom Stylesheet -->
  <link rel="stylesheet" href="style.css">
-
 
 </head>
 <body>
@@ -141,24 +141,26 @@ a.materials img {
 	<div class="span-24 last">
 		<div class="boxed-text">
 
-		<h3>Course Browser</h3>
-		<p>This is a course browser, making it easy to browse classes.</p>
+		<p>Tara's in-progress course browser, which makes it easy to browse classes by various criteria. Styled to match the Macalester website.</p>
 
-<button onclick="load2016spring()">Spring 2016</button> 
- <button onclick="load2016fall()">Fall 2016</button> 
+ <h3 class="short-margin">Load a semester</h3>
+ <span id="buttons"></span>
  <span id="debug"></span>
- <br>
+ <br><br>
 
+ <h3 class="short-margin">Sort by department</h3>
  <table id="departments" width="100%"></table>
+ <h3 class="short-margin">Sort by Distribution Requirements</h3>
  <table id="gened" width="100%"></table>
+<h3 class="short-margin">Other options</h3>
  <table id="miscOptions"></table>
 
 
 
  <table id="classTable" class="display table table-striped table-hover" width="100%"></table>
 
- <script src="courseData2016fall.js"></script>
  <script src="courseData2016spring.js"></script>
+ <script src="courseData2016fall.js"></script>
  <script src="departments.js"></script>
  <script src="gened.js"></script>
  <script src="courseDescriptions.js"></script>

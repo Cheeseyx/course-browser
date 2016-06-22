@@ -3,6 +3,7 @@ var table;
 //Load a table by default
 $(document).ready(function(){
     loadTable(courses2016fall);
+    selectTable("2016fall");
     addDetails();
 });
 
@@ -38,17 +39,37 @@ function search(){
     deptSearch();
     genEdSearch();
     labsSearch();
+    fullSearch();
 }
 
 
-// Load Labs button
+// Load musc buttons
 $(document).ready(function(){
-    var labsSpace=$("#miscOptions");
+    var miscRow=$("#miscOptions");
     var row="<td>";
     row+='<input type="checkbox" onchange="labsToggle()"> ';
     row+="Hide labs</td>";
-    labsSpace.append(row);
+    miscRow.append(row);
+
+    row="<td>";
+    row+='<input type="checkbox" onchange="fullToggle()"> ';
+    row+="Hide full classes</td>";
+    miscRow.append(row);
 });
+
+var hideFull=false;
+function fullToggle(){
+    hideFull=!hideFull;
+    fullSearch();
+}
+
+function fullSearch(){
+    if(hideFull){
+        table.column(7).search("([1-9]0/|[1-9]/)", true, false).draw();
+    } else{
+        table.column(7).search("").draw();
+    }
+}
 
 var labs=true;
 function labsToggle(){
@@ -118,4 +139,9 @@ function addDetails(){
         expandDetails(id);
     });
 
+}
+
+function selectTable(name){
+    $(".button-selected").removeClass("button-selected");
+    $("#button"+name).addClass("button-selected");
 }

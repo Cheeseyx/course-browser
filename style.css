@@ -14,3 +14,31 @@
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
 	background-color: #c9c9c9;
 }
+
+h3.short-margin{
+	margin: 16px 8px 2px !important;
+}
+
+button{
+	background-color: #c7c7c7;
+	padding: 7px 10px;
+	border: 1px solid #b0b0b0;
+	text-align: center;
+	display: inline-block;
+	transition-duration: 0.4s;
+	font-size: 14px;
+	float: left;
+}
+
+button:hover{
+	background-color: #f0f0f0;
+}
+
+button.button-selected{
+	background-color: #89d989;
+	border-color: #70c070;
+}
+
+button.button-selected:hover{
+	background-color: #b0f9b0;
+}
