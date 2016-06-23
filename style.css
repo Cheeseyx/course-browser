@@ -2,9 +2,15 @@
 	--ui-bg-color: #c7c7c7;
 	--ui-border-color: #b0b0b0;
 	--ui-bg-hover-color: #f0f0f0;
-	--ui-bg-selected-color: #89d989;
-	--ui-border-selected-color: #70c070;
-	--ui-bg-selected-hover-color: #b0f9b0;
+	--ui-text-color: #000;
+
+
+	--ui-bg-selected-color: #7e6787;
+	--ui-bg-selected-hover-color: #6b4464;
+	--ui-border-selected-color: #604969;
+	--ui-text-selected-color: #ffffff;
+
+
 
 	--stripe-odd-color: #e0e0e0;
 	--stripe-even-color: #d6d6d6;
@@ -47,6 +53,7 @@ button{
 	display: inline-block;
 	transition-duration: 0.4s;
 	font-size: 14px;
+	color: var(--ui-text-color);
 	float: left;
 }
 
@@ -65,6 +72,7 @@ button:hover{
 }
 
 button.button-selected{
+	color: var(--ui-text-selected-color);
 	background-color: var(--ui-bg-selected-color);
 	border-color: var(--ui-border-selected-color);
 }
@@ -93,6 +101,7 @@ button.button-selected:hover{
 
 .check-button label span {
     text-align:center;
+	color: var(--ui-text-color);
     padding: 5px;
     border-radius: 4px;
     border: 1px solid var(--ui-border-color);
@@ -108,6 +117,7 @@ button.button-selected:hover{
 .check-button input:checked + span {
     background-color:var(--ui-bg-selected-color);
     border-color: var(--ui-border-selected-color);
+	color: var(--ui-text-selected-color);
 }
 
 .check-button:hover input:checked + span {
