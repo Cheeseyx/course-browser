@@ -1,32 +1,48 @@
+:root {
+	--ui-bg-color: #c7c7c7;
+	--ui-border-color: #b0b0b0;
+	--ui-bg-hover-color: #f0f0f0;
+	--ui-bg-selected-color: #89d989;
+	--ui-border-selected-color: #70c070;
+	--ui-bg-selected-hover-color: #b0f9b0;
+
+	--stripe-odd-color: #e0e0e0;
+	--stripe-even-color: #d6d6d6;
+	--stripe-details-color: #f9f9f9;
+	--stripe-hover-color: #c9c9c9;
+	--stripe-details-hover-color: #cfcfcf;
+}
 
 .table-striped tbody .odd td{
-	background-color: #e0e0e0;
+	background-color: var(--stripe-odd-color);
 }
 
 .table-striped tbody .even td{
-	background-color: #d6d6d6;
+	background-color: var(--stripe-even-color);
 }
 
 .table-striped tbody .details td{
-	background-color: #f9f9f9;
+	background-color: var(--stripe-details-color);
 }
 
 .table-hover tbody tr:hover td{
-	background-color: #c9c9c9;
+	background-color: var(--stripe-hover-color);
 }
 
 .table-striped tbody .details:hover td{
-	background-color: #cfcfcf;
+	background-color: var(--stripe-details-hover-color);
 }
 
 h3.short-margin{
 	margin: 16px 8px 2px !important;
 }
 
+
+
 button{
-	background-color: #c7c7c7;
-	padding: 7px 10px;
-	border: 1px solid #b0b0b0;
+	background-color: var(--ui-bg-color);
+	padding: 7px;
+	border: 1px solid var(--ui-border-color);
 	text-align: center;
 	display: inline-block;
 	transition-duration: 0.4s;
@@ -34,49 +50,74 @@ button{
 	float: left;
 }
 
+button:first-child{
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+button:last-child{
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
 button:hover{
-	background-color: #f0f0f0;
+	background-color: var(--ui-bg-hover-color);
 }
 
 button.button-selected{
-	background-color: #89d989;
-	border-color: #70c070;
+	background-color: var(--ui-bg-selected-color);
+	border-color: var(--ui-border-selected-color);
 }
 
 button.button-selected:hover{
-	background-color: #b0f9b0;
+	background-color: var(--ui-bg-selected-hover-color);
 }
 
-.check-button{
+
+
+.check-button label{
     margin:1px;
-    background-color:#c7c7c7;
+    background-color:var(--ui-bg-color);
     border-radius:4px;
-    border:1px solid #b0b0b0;
     overflow:auto;
     float:left;
     transition-duration: 0.4s;
-}
-
-
-.check-button:hover {
-    background-color: #f0f0f0;
-}
-
-.check-button label {
     float:left;
 }
+
+
+.check-button label:hover {
+    background-color: var(--ui-bg-hover-color);
+}
+
 
 .check-button label span {
     text-align:center;
     padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--ui-border-color);
     display:block;
+    transition-duration: 0.4s;
 }
 
 .check-button label input {
 	display: none;
 }
 
+
 .check-button input:checked + span {
-    background-color:#89d989;
-    border-color: #70c070;
+    background-color:var(--ui-bg-selected-color);
+    border-color: var(--ui-border-selected-color);
+}
+
+.check-button:hover input:checked + span {
+	background-color: var(--ui-bg-selected-hover-color);
+}
+
+table.ui{
+	margin-top: 0px;
+}
+
+div.ui{
+	margin-left: 10px;
 }
