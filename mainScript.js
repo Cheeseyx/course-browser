@@ -3,6 +3,7 @@ var table;
 //Load a table by default
 $(document).ready(function(){
     loadTable(courses2016fall);
+    selectTable("2016fall");
     addDetails();
 });
 
@@ -15,21 +16,20 @@ function loadTable(data){
         "paging": false,
         "dom": 'tipr',
         columns: [
-            { title: "Department" },
+            { title: "Dept." },
             { title: "Number" },
             { title: "Title" },
             { title: "Days" },
-            { title: "Time" },
+            { title: "Time" , "width": "60px"},
             { title: "Location" },
             { title: "Professor" },
             { title: "Space" },
-            { title: "Gen. Ed."},
-            { title: "Qs" },
-            { title: "GenEdTags" },
-            { title: "CRN"}
+            { title: "Gen. Ed.", "width": "1px"}, //Column will auto-expand to minimum size needed to fit smallest word
+            { title: "Qs" , "visible": false },
+            { title: "GenEdTags" , "visible": false },
+            { title: "CRN" , "visible": false}
         ]
     });
-    table.columns([9,10,11]).visible(false);
 
     //Re-search to preserve old search parameters
     search();
@@ -39,17 +39,73 @@ function search(){
     deptSearch();
     genEdSearch();
     labsSearch();
+    spaceSearch();
+    duplicateSearch();
+
 }
 
 
-// Load Labs button
+// Load musc buttons
 $(document).ready(function(){
-    var labsSpace=$("#labs");
+    var miscRow=$("#miscOptions");
     var row="<td>";
+    row+="<div class=check-button><label>";
     row+='<input type="checkbox" onchange="labsToggle()"> ';
-    row+="Hide labs</td>";
-    labsSpace.append(row);
+    row+="<span>";
+    row+="Hide labs</span></label></div></td>";
+    miscRow.append(row);
+
+    row="<td>";
+    row+="<div class=check-button><label>";
+    row+='<input type="checkbox" onchange="spaceToggle()"> ';
+    row+="<span>";
+    row+="Hide full classes</span></label></div></td>";
+    miscRow.append(row);
+
+    
+    row="<td>";
+    row+="<div class=check-button><label>";
+    row+='<input type="checkbox" onchange="duplicateToggle()"> ';
+    row+="<span>";
+    row+="Hide extra sections</span></label></div></td>";
+    miscRow.append(row);
+
+
 });
+
+var hideFull=false;
+function spaceToggle(){
+    hideFull=!hideFull;
+    spaceSearch();
+}
+
+function spaceSearch(){
+    if(hideFull){
+        table.column(7).search("([1-9]0/|[1-9]/)", true, false).draw();
+    } else{
+        table.column(7).search("").draw();
+    }
+}
+
+var hideAlts=false;
+function duplicateToggle(){
+    hideAlts=!hideAlts;
+    duplicateSearch();
+}
+
+function duplicateSearch(){
+    if(hideAlts){
+        table.column(1).search("(-01|94-)", true, false).draw();
+        //Search for first section, or a topics-course number (meaning 294-01 and 294-02 are different)
+    } else{
+        if(!labs){
+            labsSearch();
+        } else{
+            table.column(1).search("").draw();
+        }
+    }
+
+}
 
 var labs=true;
 function labsToggle(){
@@ -103,7 +159,7 @@ function expandDetails(eleID){
 
 
     var leftPad=2;
-    var descWidth=1;
+    var descWidth=4;
     var rightPad=9-leftPad-descWidth;
     parentRow.after("<tr id=row"+eleID+" role=row> <td colspan="+leftPad+"></td><td colspan="+descWidth+"><div id=div"+eleID
         +" class=collapse>"+description+"</div></td><td colspan="+rightPad+"></td> </tr></div>");
@@ -119,4 +175,9 @@ function addDetails(){
         expandDetails(id);
     });
 
+}
+
+function selectTable(name){
+    $(".button-selected").removeClass("button-selected");
+    $("#button"+name).addClass("button-selected");
 }

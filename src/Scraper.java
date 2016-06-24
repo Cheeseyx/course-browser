@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,32 +20,45 @@ public class Scraper {
     public static void main(String[] args) {
         //loadClassDescriptions();
 
-        loadDetailedDescriptions();
+        flushCRN();
+        loadDetailedDescriptions(10002, 10010);
+        loadDetailedDescriptions(30001, 30010);
+
+        //loadDetailedDescriptions(10002, 10955);
+        //loadDetailedDescriptions(30001, 30766);
 
         /*
-        loadClasses("2016spring");
-        loadClasses("2016fall");
+        loadClasses("2016spring", "Spring 2016");
+        loadClasses("2016fall", "Fall 2016");
         //*/
-        //loadClasses("2017spring");
+        //loadClasses("2017spring", "Spring 2017");
     }
 
     public static String getAutogenString(){
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
-        return "//File generated on"+dateFormat.format(date);
+        return "//File generated on "+dateFormat.format(date);
     }
 
-    public static void loadDetailedDescriptions(){
-        int start=10002;
-        int end=11000;
+    public static void flushCRN(){
+        try{
+            PrintWriter writer = new PrintWriter("crnData.js");
+            writer.println(getAutogenString());
+            writer.println("var descCRN = {};");
+            writer.close();
+        } catch(Exception e){
+            System.err.println(e);
+        }
+    }
+
+    public static void loadDetailedDescriptions(int start, int end){
         //start=10106;
         //end=10108;
         String base="https://webapps.macalester.edu/utilities/scheduledetail/coursedetail.cfm?CRN=";
         try{
-            PrintWriter writer = new PrintWriter("crndata.js", "UTF-8");
-            writer.println(getAutogenString());
-            writer.println("var descCRN = {};");
-            for(int i=start; i<end; i++){
+
+            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("crnData.js", true)));
+            for(int i=start; i<=end; i++){
                 System.out.println(base+i);
                 URL url=new URL(base+i);
                 BufferedReader reader=new BufferedReader(new InputStreamReader(url.openStream()));
@@ -161,7 +172,7 @@ public class Scraper {
 
 
 
-    public static void loadClasses(String semester) {
+    public static void loadClasses(String semester, String semesterText) {
         System.out.println("\nLoading Macalester class data for "+semester);
 
         //Address is the base semester address
@@ -229,7 +240,7 @@ public class Scraper {
 
         System.out.println("Gen Ed page loaded. Parsing...");
 
-        internat=find(genedLines, "<h3>Internationalism</h3>", 0);
+        internat=find(genedLines, "<h3>Internationalism</h3>", 0, 0);
         q1=find(genedLines, "<strong>Q1</strong>", internat);
         q2=find(genedLines, "<strong>Q2</strong>", q1);
         q3=find(genedLines, "<strong>Q3</strong>", q2);
@@ -237,6 +248,7 @@ public class Scraper {
         wA=find(genedLines, "<strong>WA</strong>", usID);
         wC=find(genedLines, "<strong>WC</strong>", wA);
         wP=find(genedLines, "<strong>WP</strong>", wC);
+
 
         HashMap<String, Integer> internationalism = new HashMap<>();
         HashMap<String, Integer> quantitative = new HashMap<>();
@@ -308,11 +320,20 @@ public class Scraper {
             PrintWriter writer = new PrintWriter("courseData" +semester+ ".js", "UTF-8");
 
             writer.println(getAutogenString());
+
+            writer.println("$(document).ready(function(){");
+            writer.println("    var button='<button id=button"+semester+" onClick=load"+semester+"()>';");
+            writer.println("    button+='"+semesterText+"';");
+            writer.println("    button+='</button>';");
+            writer.println("    $('#buttons').append(button); ");
+            writer.println("});");
+
             writer.println("function load"+semester+"(){");
             //writer.println("    table.clear().draw();");
             writer.println("    table.destroy();");
             writer.println("    loadTable(courses"+semester+");");
             writer.println("    addDetails();");
+            writer.println("    selectTable('"+semester+"')");
             writer.println("}");
 
             writer.println("var courses"+semester+" = [");
@@ -331,6 +352,7 @@ public class Scraper {
 
     }
 
+
     public static ArrayList<String> getClasses(ArrayList<String> lines, int start, int end){
         ArrayList<String> classes=new ArrayList<>();
         for(int i=start; i<end; i++){
@@ -345,10 +367,14 @@ public class Scraper {
     }
 
     public static int find(ArrayList<String> lines, String target, int start){
+        return find(lines, target, start, start);
+    }
+
+    public static int find(ArrayList<String> lines, String target, int start, int prev){
         for(int i=start; i<lines.size(); i++){
             if(lines.get(i).contains(target))
                 return i;
         }
-        return -1;
+        return prev;
     }
 }

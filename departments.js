@@ -40,7 +40,7 @@ var departments = [
 ];
 
 $(document).ready(function(){
-	var perRow=5;
+	var perRow=4;
 	var rows=Math.floor(departments.length/perRow);
 	var deptTable=$("#departments");
 	for(i=0; i<departments.length+perRow; i+=perRow){
@@ -48,8 +48,9 @@ $(document).ready(function(){
 		for(j=0; j<perRow && i+j<departments.length; j++){
 			var dept=departments[i+j];
 			row+="<td>";
+			row+="<div class=check-button><label>";
 			row+='<input type="checkbox" onchange="deptToggle(this.value)" value='+dept[0] +'> ';
-			row+=dept[1]+"</td>";
+			row+="<span>"+dept[1]+"</span></label></div></td>";
 		}
 		row+="</tr>"
 		deptTable.append(row);

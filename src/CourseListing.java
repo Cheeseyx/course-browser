@@ -86,6 +86,7 @@ public class CourseListing {
         startIndex=s4.indexOf("nowrap;\">") + 9;
         endIndex=s4.indexOf("</span>");
         timeWords=s4.substring(startIndex, endIndex);
+        timeWords=timeWords.replace("-"," - ");
 
         //Location
         startIndex=s5.indexOf("<td>") + 4;
