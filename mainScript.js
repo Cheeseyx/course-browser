@@ -39,7 +39,9 @@ function search(){
     deptSearch();
     genEdSearch();
     labsSearch();
-    fullSearch();
+    spaceSearch();
+    duplicateSearch();
+
 }
 
 
@@ -55,24 +57,54 @@ $(document).ready(function(){
 
     row="<td>";
     row+="<div class=check-button><label>";
-    row+='<input type="checkbox" onchange="fullToggle()"> ';
+    row+='<input type="checkbox" onchange="spaceToggle()"> ';
     row+="<span>";
     row+="Hide full classes</span></label></div></td>";
     miscRow.append(row);
+
+    
+    row="<td>";
+    row+="<div class=check-button><label>";
+    row+='<input type="checkbox" onchange="duplicateToggle()"> ';
+    row+="<span>";
+    row+="Hide extra sections</span></label></div></td>";
+    miscRow.append(row);
+
+
 });
 
 var hideFull=false;
-function fullToggle(){
+function spaceToggle(){
     hideFull=!hideFull;
-    fullSearch();
+    spaceSearch();
 }
 
-function fullSearch(){
+function spaceSearch(){
     if(hideFull){
         table.column(7).search("([1-9]0/|[1-9]/)", true, false).draw();
     } else{
         table.column(7).search("").draw();
     }
+}
+
+var hideAlts=false;
+function duplicateToggle(){
+    hideAlts=!hideAlts;
+    duplicateSearch();
+}
+
+function duplicateSearch(){
+    if(hideAlts){
+        table.column(1).search("(-01|94-)", true, false).draw();
+        //Search for first section, or a topics-course number (meaning 294-01 and 294-02 are different)
+    } else{
+        if(!labs){
+            labsSearch();
+        } else{
+            table.column(1).search("").draw();
+        }
+    }
+
 }
 
 var labs=true;
