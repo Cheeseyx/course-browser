@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- Bootstrap CSS -->
+ <link rel="stylesheet" href="bootstrap/bootstrap.css">
+ <!-- jQuery library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+ <!-- Bootstrap JavaScript -->
+ <script src="bootstrap/bootstrap.min.js"></script>
+ <!-- Datatables CSS -->
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.css"/>
+ <!-- Datatables Javascript -->
+ <script type="text/javascript" src="https://cdn.datatables.net/u/bs/dt-1.10.12/datatables.min.js"></script>
+ <!-- Custom Stylesheet -->
+ <link rel="stylesheet" href="genericStyle.css">
+
+ <title> Course Browser - Unstyled </title>
+</head>
+
+<body>
+
+
+
+
+ <h3 class="short-margin">Load a semester</h3>
+ <div class="ui" id="buttons"></div>
+ <span id="debug"></span>
+ <br><br>
+
+ <h3 class="short-margin">Sort by department</h3>
+ <table class="ui" id="departments" width="100%"></table>
+ <h3 class="short-margin">Sort by Distribution Requirements</h3>
+ <table class="ui" id="gened" width="100%"></table>
+<h3 class="short-margin">Other options</h3>
+ <table class="ui" id="miscOptions"></table>
+
+
+
+ <table id="classTable" class="display table table-striped table-hover" width="100%"></table>
+
+ <script src="courseData2016spring.js"></script>
+ <script src="courseData2016fall.js"></script>
+ <script src="courseData2017spring.js"></script>
+ <script src="departments.js"></script>
+ <script src="gened.js"></script>
+ <script src="courseDescriptions.js"></script>
+ <script src="crndata.js"></script>
+ <script src="mainScript.js"></script>
+
+
+</body>
+</html>
