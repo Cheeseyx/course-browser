@@ -2,6 +2,7 @@
 	--ui-bg-color: #c7c7c7;
 	--ui-border-color: #b0b0b0;
 	--ui-bg-hover-color: #f0f0f0;
+	--ui-bg-active-color: #ffffff;
 	--ui-text-color: #000;
 
 
@@ -18,6 +19,14 @@
 	--stripe-hover-color: #c9c9c9;
 	--stripe-details-hover-color: #cfcfcf;
 }
+
+
+#side-scroller{
+	position: fixed;
+	bottom: 20px;
+	right: 19%;
+}
+
 
 .table-striped tbody .odd td{
 	background-color: var(--stripe-odd-color);
@@ -49,6 +58,8 @@ button{
 	background-color: var(--ui-bg-color);
 	padding: 7px;
 	border: 1px solid var(--ui-border-color);
+	border-left-width: 0px;
+	border-right-width: 0px;
 	text-align: center;
 	display: inline-block;
 	transition-duration: 0.4s;
@@ -60,11 +71,13 @@ button{
 button:first-child{
 	border-top-left-radius: 7px;
 	border-bottom-left-radius: 7px;
+	border-left-width: 1px;
 }
 
 button:last-child{
 	border-top-right-radius: 7px;
 	border-bottom-right-radius: 7px;
+	border-right-width: 1px;
 }
 
 button:hover{
@@ -74,7 +87,6 @@ button:hover{
 button.button-selected{
 	color: var(--ui-text-selected-color);
 	background-color: var(--ui-bg-selected-color);
-	border-color: var(--ui-border-selected-color);
 }
 
 button.button-selected:hover{
@@ -86,7 +98,7 @@ button.button-selected:hover{
 .check-button label{
     margin:1px;
     background-color:var(--ui-bg-color);
-    border-radius:4px;
+    border-radius: 6px;
     overflow:auto;
     float:left;
     transition-duration: 0.4s;
@@ -103,13 +115,13 @@ button.button-selected:hover{
     text-align:center;
 	color: var(--ui-text-color);
     padding: 5px;
-    border-radius: 4px;
+    border-radius: 6px;
     border: 1px solid var(--ui-border-color);
     display:block;
     transition-duration: 0.4s;
 }
 
-.check-button label input {
+.check-button label input, .press-button label input{
 	display: none;
 }
 
@@ -131,3 +143,20 @@ table.ui{
 div.ui{
 	margin-left: 10px;
 }
+
+.press-button label span {
+	border-radius: 4px;
+	border: 1px solid var(--ui-border-color);
+	background-color: var(--ui-bg-color);
+	padding: 3px;
+	transition-duration: 0.4s;
+}
+
+.press-button label span:hover {
+	background-color: var(--ui-bg-hover-color);
+}
+
+.press-button label span:active {
+	background-color: var(--ui-bg-active-color);
+}
+

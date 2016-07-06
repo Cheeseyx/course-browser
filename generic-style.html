@@ -20,23 +20,31 @@
 <body>
 
 
+<div class="page-center">
 
-
+<div class="main-ui">
  <h3 class="short-margin">Load a semester</h3>
- <div class="ui" id="buttons"></div>
+ <table class="ui" id="buttons"></table>
  <span id="debug"></span>
- <br><br>
 
  <h3 class="short-margin">Sort by department</h3>
- <table class="ui" id="departments" width="100%"></table>
+ <table class="ui" id="departments"></table>
+
  <h3 class="short-margin">Sort by Distribution Requirements</h3>
- <table class="ui" id="gened" width="100%"></table>
-<h3 class="short-margin">Other options</h3>
+ <table class="ui" id="gened"></table>
+
+ <h3 class="short-margin">Other options</h3>
  <table class="ui" id="miscOptions"></table>
+</div>
 
 
+<div class="class-table">
+ <table id="classTable" class="display table table-striped table-hover"></table>
+</div>
 
- <table id="classTable" class="display table table-striped table-hover" width="100%"></table>
+</div>
+
+<div id="side-scroller" class="ui"></div>
 
  <script src="courseData2016spring.js"></script>
  <script src="courseData2016fall.js"></script>

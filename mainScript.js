@@ -16,14 +16,14 @@ function loadTable(data){
         "paging": false,
         "dom": 'tipr',
         columns: [
-            { title: "Dept." },
+            { title: "Dept."},
             { title: "Number" },
             { title: "Title" },
             { title: "Days" },
             { title: "Time" , "width": "60px"},
             { title: "Location" },
             { title: "Professor" },
-            { title: "Space" },
+            { title: "Space" , "width": "1px"},
             { title: "Gen. Ed.", "width": "1px"}, //Column will auto-expand to minimum size needed to fit smallest word
             { title: "Qs" , "visible": false },
             { title: "GenEdTags" , "visible": false },
@@ -70,8 +70,18 @@ $(document).ready(function(){
     row+="Hide extra sections</span></label></div></td>";
     miscRow.append(row);
 
+    var scroller=$("#side-scroller");
+    row="<div class=press-button><label>";
+    row+='<input type="button" onclick="returnToTop()"> ';
+    row+="<span>";
+    row+="Return to top</span></label></div></td>";
+    scroller.append(row);
 
 });
+
+function returnToTop(){ 
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+}
 
 var hideFull=false;
 function spaceToggle(){
@@ -146,7 +156,7 @@ function expandDetails(eleID){
     var CRN=$("#"+eleID).attr("crn");
     //debug(CRN);
 
-    if(CRN != 0){
+    if(descCRN[CRN] != null){
         var url="https://webapps.macalester.edu/utilities/scheduledetail/coursedetail.cfm?CRN="+CRN;
         //description="<iframe width=100% src="+url+"></iframe>";
         description=descCRN[CRN];

@@ -1,20 +1,206 @@
-table, td{
-	padding: 5px;
+:root {
+	--ui-bg-color: #a7a7a7;
+	--ui-border-color: #404040;
+	--ui-bg-hover-color: #d7d7d7;
+	--ui-bg-hover-color: #c7c7c7;
+	--ui-text-color: #101010;
+
+
+	--ui-bg-selected-color: #276727;
+	--ui-bg-selected-hover-color: #3a853a;
+	--ui-border-selected-color: #074707;
+	--ui-text-selected-color: #ffffff;
+
+
+
+	--stripe-odd-color: #e0e0e0;
+	--stripe-even-color: #d6d6d6;
+	--stripe-details-color: #f9f9f9;
+	--stripe-hover-color: #c9c9c9;
+	--stripe-details-hover-color: #cfcfcf;
+
+}
+
+#side-scroller{
+	position: fixed;
+	bottom: 20px;
+	right: 5%;
+}
+
+
+body{
+	background-color: #e7e7e7;
+}
+
+.page-center{
+	margin: 0px 14%;
+	/* background-color: #f9f9f9; /* */
+	padding: 1px 0px ;
+}
+
+#classTable{
+	margin-top: 0px !important;
+}
+
+.class-table{
+	padding: 0px 15px 10px 0px;
+	background-color: var(--stripe-details-color);
+	border-radius: 10px;
+	border: 2px solid var(--ui-border-color);
+}
+
+.main-ui{
+	padding: 1px 0 20px;
+}
+
+.ui{
+	margin: auto;
+	color: var(--ui-text-color);
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+	user-select: none;
+}
+
+
+td{
+	padding: 4px 10px 4px 4px;
+}
+
+.ui label, .ui button{
+	font-weight: bold;
 }
 
 .table-striped tbody .odd td{
-	background-color: #e3e3e3;
+	background-color: var(--stripe-odd-color);
 }
 
 .table-striped tbody .even td{
-	background-color: #f9f9f9;
+	background-color: var(--stripe-even-color);
 }
 
 .table-striped tbody .details td{
-	background-color: #d0d0d0;
+	background-color: var(--stripe-details-color);
 }
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-	background-color: #c9c9c9;
+.table-hover tbody tr:hover td{
+	background-color: var(--stripe-hover-color);
+}
+
+.table-striped tbody .details:hover td{
+	background-color: var(--stripe-details-hover-color);
+}
+
+h3.short-margin{
+	margin: 16px auto 2px;
+	text-align: center;
+	color: #070707;
+}
+
+
+
+button{
+	background-color: var(--ui-bg-color);
+	padding: 7px;
+	border: 2px solid var(--ui-border-color);
+	border-left-width: 1px;
+	border-right-width: 1px;
+	text-align: center;
+	display: inline-block;
+	transition-duration: 0.4s;
+	font-size: 14px;
+	color: var(--ui-text-color);
+	float: left;
+}
+
+button:first-child{
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	border-left-width: 2px;
+}
+
+button:last-child{
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+	border-right-width: 2px
+}
+
+button:hover{
+	background-color: var(--ui-bg-hover-color);
+}
+
+button.button-selected{
+	color: var(--ui-text-selected-color);
+	background-color: var(--ui-bg-selected-color);
+	border-color: var(--ui-border-color);
+}
+
+button.button-selected:hover{
+	background-color: var(--ui-bg-selected-hover-color);
+}
+
+
+
+.check-button label{
+    margin:1px;
+    background-color:var(--ui-bg-color);
+    border-radius:4px;
+    overflow:auto;
+    float:left;
+    transition-duration: 0.4s;
+    float:left;
+}
+
+
+.check-button label:hover {
+    background-color: var(--ui-bg-hover-color);
+}
+
+
+.check-button label span {
+    text-align:center;
+	color: var(--ui-text-color);
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid var(--ui-border-color);
+    display:block;
+    transition-duration: 0.4s;
+}
+
+.check-button label input, .press-button label input {
+	display: none;
+}
+
+
+.check-button input:checked + span {
+    background-color:var(--ui-bg-selected-color);
+    border-color: var(--ui-border-selected-color);
+	color: var(--ui-text-selected-color);
+}
+
+.check-button:hover input:checked + span {
+	background-color: var(--ui-bg-selected-hover-color);
+}
+
+table.ui{
+	margin-top: 0px;
+}
+
+.press-button label span {
+	border-radius: 4px;
+	border: 2px solid var(--ui-border-color);
+	background-color: var(--ui-bg-color);
+	padding: 3px;
+	transition-duration: 0.4s;
+}
+
+.press-button label span:hover {
+	background-color: var(--ui-bg-hover-color);
+}
+
+.press-button label span:active {
+	background-color: var(--ui-bg-active-color);
 }
 
