@@ -58,7 +58,6 @@ button{
 	background-color: var(--ui-bg-color);
 	padding: 7px;
 	border: 1px solid var(--ui-border-color);
-	border-left-width: 0px;
 	border-right-width: 0px;
 	text-align: center;
 	display: inline-block;
