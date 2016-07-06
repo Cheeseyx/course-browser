@@ -59,7 +59,7 @@ $(document).ready(function(){
     row+="<div class=check-button><label>";
     row+='<input type="checkbox" onchange="spaceToggle()"> ';
     row+="<span>";
-    row+="Hide full classes</span></label></div></td>";
+    row+="Hide full sections</span></label></div></td>";
     miscRow.append(row);
 
     
@@ -76,6 +76,10 @@ $(document).ready(function(){
     row+="<span>";
     row+="Return to top</span></label></div></td>";
     scroller.append(row);
+
+
+    // scroller.hide();
+    // Hide scroller by default disabled along with fade in/out (see note below)
 
 });
 
@@ -191,3 +195,26 @@ function selectTable(name){
     $(".button-selected").removeClass("button-selected");
     $("#button"+name).addClass("button-selected");
 }
+
+/*
+
+// Fade in/out disabled due to issue where scrolling could produce a visual bug
+// (The appearance of a second Return To Top button, which wasn't in a fixed position and couldn't be interacted with)
+
+var scrollShown=false;
+
+$(window).scroll(function(){
+
+
+    var scroll= $(window).scrollTop();
+    if(scroll > 40){
+        if(scrollShown==false){
+            $("#side-scroller").fadeIn();
+            scrollShown = true;
+        }
+    } else {
+        $("#side-scroller").fadeOut();
+        scrollShown = false;
+    }
+
+}); // */
