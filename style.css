@@ -12,12 +12,27 @@
 	--ui-text-selected-color: #ffffff;
 
 
+	--ui-bg-disabled-color: #d7d7d7;
+	--ui-border-disabled-color: #909090;
+	--ui-text-disabled-color: #707070;
+
+
+
 
 	--stripe-odd-color: #e0e0e0;
 	--stripe-even-color: #d6d6d6;
 	--stripe-details-color: #f9f9f9;
 	--stripe-hover-color: #c9c9c9;
 	--stripe-details-hover-color: #cfcfcf;
+}
+
+.ui{
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+	user-select: none;
 }
 
 
@@ -159,3 +174,9 @@ div.ui{
 	background-color: var(--ui-bg-active-color);
 }
 
+
+.check-button input:disabled + span, .press-button lavel span{
+	border-color: var(--ui-border-disabled-color);
+	background-color: var(--ui-bg-disabled-color);
+	color: var(--ui-text-disabled-color);
+}
