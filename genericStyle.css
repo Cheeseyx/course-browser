@@ -11,6 +11,9 @@
 	--ui-border-selected-color: #074707;
 	--ui-text-selected-color: #ffffff;
 
+	--ui-bg-disabled-color: #d7d7d7;
+	--ui-border-disabled-color: #909090;
+	--ui-text-disabled-color: #707070;
 
 
 	--stripe-odd-color: #e0e0e0;
@@ -209,3 +212,8 @@ table.ui{
 	background-color: var(--ui-bg-active-color);
 }
 
+.check-button input:disabled + span, .press-button lavel span{
+	border-color: var(--ui-border-disabled-color);
+	background-color: var(--ui-bg-disabled-color);
+	color: var(--ui-text-disabled-color);
+}

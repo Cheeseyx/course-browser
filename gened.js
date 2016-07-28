@@ -14,7 +14,7 @@ $(document).ready(function(){
 		button+="<div class=check-button><label>";
 		button+='<input type="checkbox" onchange="genEdToggle(this.value)" value='+genEdData[i][0] +'> ';
 		button+="<span>"+genEdData[i][1] +"</span></label></div></td>";
-		genEdBox.append(button)
+		genEdBox.append(button);
 	}
 
 	var type="<td>";

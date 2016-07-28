@@ -137,6 +137,7 @@ function labsSearch(){
 
 function debug(text){
     $("#debug").append(text+" ");
+    console.log(text);
 }
 
 function expandDetails(eleID){
