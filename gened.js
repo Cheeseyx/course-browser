@@ -20,7 +20,7 @@ $(document).ready(function(){
 	var type="<td>";
 	type+="<div class=check-button><label>";
 	type+='<input type="checkbox" onchange="typeToggle()"><span>';
-	type+="Show only classes meeting all Gen. Ed. Requirements </span></label></div></td>";
+	type+="Only classes meeting all selected Gen. Ed. Categories </span></label></div></td>";
 	$("#miscOptions").append(type);
 
 });
