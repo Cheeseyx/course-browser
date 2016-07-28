@@ -18,6 +18,7 @@
 	--stripe-details-color: #f9f9f9;
 	--stripe-hover-color: #c9c9c9;
 	--stripe-details-hover-color: #cfcfcf;
+	--stripe-head-color: #b0b0b0;
 
 }
 
@@ -44,7 +45,7 @@ body{
 
 .class-table{
 	padding: 0px 15px 10px 0px;
-	background-color: var(--stripe-details-color);
+	background-color: var(--stripe-head-color);
 	border-radius: 10px;
 	border: 2px solid var(--ui-border-color);
 }
@@ -93,13 +94,17 @@ td{
 	background-color: var(--stripe-details-hover-color);
 }
 
+.table thead tr th{
+	border-bottom-color: var(--ui-border-color);
+}
+
+
+
 h3.short-margin{
 	margin: 16px auto 2px;
 	text-align: center;
 	color: #070707;
 }
-
-
 
 button{
 	background-color: var(--ui-bg-color);
