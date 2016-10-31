@@ -47,7 +47,7 @@ body{
 }
 
 .class-table{
-	padding: 0px 15px 10px 0px;
+	padding: 0px 3px 10px 0px;
 	background-color: var(--stripe-head-color);
 	border-radius: 10px;
 	border: 2px solid var(--ui-border-color);
