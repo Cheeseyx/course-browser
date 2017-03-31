@@ -2,8 +2,8 @@ var table;
 
 //Load a table by default
 $(document).ready(function(){
-    loadTable(courses2017spring);
-    selectTable("2017spring");
+    loadTable(courses2017fall);
+    selectTable("2017fall");
     addDetails();
 });
 
