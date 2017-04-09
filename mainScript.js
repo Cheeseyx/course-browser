@@ -11,6 +11,15 @@ $(document).ready(function(){
 //Load a table
 //Called by functions auto-generated for each data table
 function loadTable(data){
+
+    for(let i = 0; i<data.length; i++){
+        let row = data[i]
+        let crnVal = row[11];
+        data[i][12] = '';
+        if(!(distData[crnVal] === undefined))
+            data[i][12] = distData[crnVal];
+    }
+
     table = $('#classTable').DataTable( {
         data: data,
         "paging": false,
@@ -27,7 +36,8 @@ function loadTable(data){
             { title: "Gen. Ed.", "width": "1px"}, //Column will auto-expand to minimum size needed to fit smallest word
             { title: "Qs" , "visible": false },
             { title: "GenEdTags" , "visible": false },
-            { title: "CRN" , "visible": false}
+            { title: "CRN" , "visible": false},
+            { title: "Dist" , "visible": true}
         ]
     });
 
