@@ -18,20 +18,20 @@ public class Scraper {
      */
 
     public static void main(String[] args) {
-        //loadClassDescriptions();
+        loadClassDescriptions();
 
+        /*
         flushCRN();
-        loadDetailedDescriptions(10002, 10010);
-        loadDetailedDescriptions(30001, 30010);
-
-        //loadDetailedDescriptions(10002, 10955);
-        //loadDetailedDescriptions(30001, 30766);
+        flushDist();
+        loadDetailedDescriptions(10001, 10100,"Fall%202017");
+        //*/
 
         /*
         loadClasses("2016spring", "Spring 2016");
         loadClasses("2016fall", "Fall 2016");
+        loadClasses("2017spring", "Spring 2017");
         //*/
-        //loadClasses("2017spring", "Spring 2017");
+        //loadClasses("2017fall", "Fall 2017");
     }
 
     public static String getAutogenString(){
@@ -42,7 +42,7 @@ public class Scraper {
 
     public static void flushCRN(){
         try{
-            PrintWriter writer = new PrintWriter("crnData.js");
+            PrintWriter writer = new PrintWriter("data/crnData.js");
             writer.println(getAutogenString());
             writer.println("var descCRN = {};");
             writer.close();
@@ -50,31 +50,55 @@ public class Scraper {
             System.err.println(e);
         }
     }
+    public static void flushDist(){
+        try{
+            PrintWriter writer = new PrintWriter("data/distData.js");
+            writer.println(getAutogenString());
+            writer.println("var distData = {};");
+            writer.close();
+        } catch(Exception e){
+            System.err.println(e);
+        }
+    }
 
-    public static void loadDetailedDescriptions(int start, int end){
-        //start=10106;
-        //end=10108;
+    public static void loadDetailedDescriptions(int start, int end, String suffix){
         String base="https://webapps.macalester.edu/utilities/scheduledetail/coursedetail.cfm?CRN=";
+        String urlSuffix = "&TermDescription=" + suffix;
         try{
 
-            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("crnData.js", true)));
+            PrintWriter crnWriter = new PrintWriter(new BufferedWriter(new FileWriter("data/crnData.js", true)));
+            PrintWriter distWriter = new PrintWriter(new BufferedWriter(new FileWriter("data/distData.js", true)));
             for(int i=start; i<=end; i++){
-                System.out.println(base+i);
-                URL url=new URL(base+i);
+                System.out.println(base+i+urlSuffix);
+                URL url=new URL(base+i+urlSuffix);
                 BufferedReader reader=new BufferedReader(new InputStreamReader(url.openStream()));
 
                 String inputLine;
+                boolean scanningDistr = false; // Scanning for distribution info
                 while ((inputLine = reader.readLine()) != null) {
+                    if(scanningDistr && inputLine.contains("<br />")) {
+                        String dist = inputLine.substring(0, inputLine.indexOf("<br />"));
+                        //System.out.println(dist);
+                        String suf = suffix.replaceAll("%20", " ");
+                        distWriter.println("distData["+i+suf+"] = '" + dist + "';");
+                    }
+                    if(inputLine.contains("<br />") || inputLine.contains("</p>"))
+                        scanningDistr = false;
+                    if(inputLine.contains("Distribution")){
+                        scanningDistr = true;
+                    }
+
                     if(inputLine.contains("Notes")){
                         inputLine=inputLine.replaceAll("\'","\\\\'");
-                        writer.println("descCRN["+i+"] = '"+inputLine+"';");
+                        crnWriter.println("descCRN["+i+"] = '"+inputLine+"';");
                     }
 
                 }
                 reader.close();
 
             }
-            writer.close();
+            crnWriter.close();
+            distWriter.close();
         } catch (Exception e){
             System.err.println(e);
         }
@@ -154,7 +178,7 @@ public class Scraper {
         }
 
         try {
-            PrintWriter writer = new PrintWriter("courseDescriptions.js", "UTF-8");
+            PrintWriter writer = new PrintWriter("data/courseDescriptions.js", "UTF-8");
             writer.println(getAutogenString());
             writer.println("var descriptions = {};");
             for (String key : descMap.keySet()) {
@@ -317,7 +341,7 @@ public class Scraper {
         System.out.println("Data compiled. Printing to javascript file...");
 
         try {
-            PrintWriter writer = new PrintWriter("courseData" +semester+ ".js", "UTF-8");
+            PrintWriter writer = new PrintWriter("data/courseData" +semester+ ".js", "UTF-8");
 
             writer.println(getAutogenString());
 
