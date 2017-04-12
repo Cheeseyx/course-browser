@@ -185,7 +185,7 @@ function expandDetails(eleID){
 
     var leftPad=2;
     var descWidth=4;
-    var rightPad=9-leftPad-descWidth;
+    var rightPad=10-leftPad-descWidth;
     parentRow.after("<tr id=row"+eleID+" role=row> <td colspan="+leftPad+"></td><td colspan="+descWidth+"><div id=div"+eleID
         +" class=collapse>"+description+"</div></td><td colspan="+rightPad+"></td> </tr></div>");
     $("#row"+eleID).attr("class", "details");
