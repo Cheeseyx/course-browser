@@ -1,4 +1,4 @@
-var table;
+let table;
 
 //Load a table by default
 $(document).ready(function(){
@@ -13,7 +13,7 @@ $(document).ready(function(){
 function loadTable(data){
 
     for(let i = 0; i<data.length; i++){
-        let row = data[i]
+        let row = data[i];
         let crnVal = row[11];
         data[i][12] = '';
         if(!(distData[crnVal] === undefined))
@@ -55,16 +55,19 @@ function search(){
 }
 
 
-// Load musc buttons
+// Load misc buttons
 $(document).ready(function(){
-    var miscRow=$("#miscOptions");
-    var row="<td>";
+    let miscRow = $("#miscOptions");
+
+    // Hide/show labs
+    let row = "<td>";
     row+="<div class=check-button><label>";
     row+='<input type="checkbox" onchange="labsToggle()"> ';
     row+="<span>";
     row+="Hide labs</span></label></div></td>";
     miscRow.append(row);
 
+    // Hide full sections
     row="<td>";
     row+="<div class=check-button><label>";
     row+='<input type="checkbox" onchange="spaceToggle()"> ';
@@ -72,7 +75,7 @@ $(document).ready(function(){
     row+="Hide full sections</span></label></div></td>";
     miscRow.append(row);
 
-    
+    // Hide extra sections
     row="<td>";
     row+="<div class=check-button><label>";
     row+='<input type="checkbox" onchange="duplicateToggle()"> ';
@@ -80,7 +83,7 @@ $(document).ready(function(){
     row+="Hide extra sections</span></label></div></td>";
     miscRow.append(row);
 
-    var scroller=$("#side-scroller");
+    const scroller = $("#side-scroller");
     row="<div class=press-button><label>";
     row+='<input type="button" onclick="returnToTop()"> ';
     row+="<span>";
@@ -97,7 +100,22 @@ function returnToTop(){
     $("html, body").animate({ scrollTop: 0 }, "slow");
 }
 
-var hideFull=false;
+// Hide morning classes
+let hideMorning=false;
+function morningToggle(){
+    hideMorning = !hideMorning;
+    timeSearch();
+}
+function timeSearch(){
+    if(hideMorning){
+        table.column(4).search("pm").draw();
+    } else{
+        table.column(4).search("").draw();
+    }
+}
+
+// Hide full sections
+let hideFull = false;
 function spaceToggle(){
     hideFull=!hideFull;
     spaceSearch();
@@ -111,12 +129,13 @@ function spaceSearch(){
     }
 }
 
-var hideAlts=false;
+// Hide labs and extra section listings
+let hideAlts = false;
 function duplicateToggle(){
     hideAlts=!hideAlts;
     duplicateSearch();
 }
-
+let labs = true;
 function duplicateSearch(){
     if(hideAlts){
         table.column(1).search("(-01|94-)", true, false).draw();
@@ -131,7 +150,6 @@ function duplicateSearch(){
 
 }
 
-var labs=true;
 function labsToggle(){
     labs=!labs;
     labsSearch();
@@ -145,6 +163,8 @@ function labsSearch(){
     }
 }
 
+
+
 function debug(text){
     $("#debug").append(text+" ");
     console.log(text);
@@ -152,51 +172,53 @@ function debug(text){
 
 function expandDetails(eleID){
     // If opened, close it
-    if($("#div"+eleID).length){
-        $("#div"+eleID).on("hidden.bs.collapse", function(){
-            $("#row"+eleID).remove();
+    let target = $("#div"+eleID);
+    if(target.length){
+        target.on("hidden.bs.collapse", function(){
+            target.remove();
         });
-        $("#div"+eleID).collapse("hide");
+        target.collapse("hide");
         return;
     }
 
 
-    var shortened=eleID.slice(0,-3);
+    const shortened = eleID.slice(0, -3);
 
-    var description="No description found.";
+    let description = "No description found.";
     if(shortened in descriptions){
         description=descriptions[shortened];
     }
 
-    var CRN=$("#"+eleID).attr("crn");
+
+    const CRN = $("#" + eleID).attr("crn");
     //debug(CRN);
 
     if(descCRN[CRN] != null){
-        var url="https://webapps.macalester.edu/utilities/scheduledetail/coursedetail.cfm?CRN="+CRN;
+        //const url = "https://webapps.macalester.edu/utilities/scheduledetail/coursedetail.cfm?CRN=" + CRN;
         //description="<iframe width=100% src="+url+"></iframe>";
         description=descCRN[CRN];
         //debug("sending ajax");
     }
 
 
-    var parentRow=$("#"+eleID).parents().eq(1);
+    const parentRow = $("#" + eleID).parents().eq(1);
 
 
 
-    var leftPad=2;
-    var descWidth=4;
-    var rightPad=10-leftPad-descWidth;
+    const leftPad = 2;
+    const descWidth = 4;
+    const rightPad = 10 - leftPad - descWidth;
     parentRow.after("<tr id=row"+eleID+" role=row> <td colspan="+leftPad+"></td><td colspan="+descWidth+"><div id=div"+eleID
         +" class=collapse>"+description+"</div></td><td colspan="+rightPad+"></td> </tr></div>");
     $("#row"+eleID).attr("class", "details");
-    $("#div"+eleID).collapse("show");
+    target.collapse("show");
 
 }
 
 function addDetails(){
-    var allRows = table.rows().nodes().to$();
+    const allRows = table.rows().nodes().to$();
     allRows.click(function(row){
-        var id = $(this).children().eq(0).children().eq(0).attr("id");
+        const id = $(this).children().eq(0).children().eq(0).attr("id");
         expandDetails(id);
     });
 
