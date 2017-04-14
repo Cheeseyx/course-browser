@@ -185,7 +185,7 @@ function expandDetails(eleID){
     let target = $("#div"+eleID);
     if(target.length){
         target.on("hidden.bs.collapse", function(){
-            target.remove();
+            $("#row"+eleID).remove();
         });
         target.collapse("hide");
         return;
