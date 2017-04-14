@@ -83,6 +83,16 @@ $(document).ready(function(){
     row+="Hide extra sections</span></label></div></td>";
     miscRow.append(row);
 
+    // Hide morning classes
+    row="<td>";
+    row+="<div class=check-button><label>";
+    row+='<input type="checkbox" onchange="morningToggle()"> ';
+    row+="<span>";
+    row+="Hide morning classes</span></label></div></td>";
+    miscRow.append(row);
+
+
+
     const scroller = $("#side-scroller");
     row="<div class=press-button><label>";
     row+='<input type="button" onclick="returnToTop()"> ';
