@@ -1,3 +1,6 @@
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 /**
  * Created by Tara on 6/8/2016.
  */
@@ -46,6 +49,60 @@ public class CourseListing {
     private boolean usID;
     private boolean wa, wc, wp;
 
+    public CourseListing(Element course, Element description){
+
+        //Department and Number
+        String deptNum = course.select(".class-schedule-course-number").html();
+        int startIndex = deptNum.indexOf("&nbsp;");
+        int endIndex = startIndex + 6;
+        department = deptNum.substring(0,startIndex);
+        number = deptNum.substring(endIndex);
+
+
+        //Course ID
+        courseID=department+" "+number;
+
+        //Title
+        title = course.select(".class-schedule-course-title").html();
+        title=title.replaceAll("'", "\\\\'");
+
+        //CRN
+        CRN = description.select(".expandable-body").first().id();
+
+        //Days, Time, Room, Instructor, Space
+        Elements labels=course.select(".class-schedule-label");
+
+        //Days
+        days=labels.get(0).ownText();
+
+        //Time words
+        timeWords=labels.get(1).ownText();
+        timeWords=timeWords.replace("-"," - ");
+
+        //Location
+        location=labels.get(2).ownText();
+
+        //Professor
+        professor=labels.get(3).ownText();
+
+        //Space
+        space=labels.get(4).ownText();
+        space=space.replaceAll("&nbsp;","");
+
+        //Initialize Gen Ed requirements
+        String fullDesc = description.html();
+        internationalism=fullDesc.contains("Internationalism");
+        qs=0;
+        if(fullDesc.contains("Quantitative Thinking Q")){
+            int index = fullDesc.indexOf("Quantitative Thinking Q");
+            index = fullDesc.indexOf("<br", index);
+            qs = Integer.parseInt(""+fullDesc.charAt(index-1));
+        }
+        usID=fullDesc.contains("U.S. Identities and Differences");
+        wa=fullDesc.contains("Writing WA");
+        wc=fullDesc.contains("Writing WC");
+        wp=fullDesc.contains("Writing WP");
+    }
 
     public CourseListing(String s1, String s2, String s3, String s4, String s5, String s6, String s7){
         //Department
@@ -142,7 +199,7 @@ public class CourseListing {
                 +"','" +(internationalism?"INTERNAT,":"") +((qs>0)?"Q"+qs+",":"")
                 +(usID?"USID,":"") + (wa?"WA,":"")  +(wc?"WC,":"")  +(wp?"WP,":"")
                 + "','"+CRN
-                + "']";
+                + "','']";
     }
 
 }

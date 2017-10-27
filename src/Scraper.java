@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.net.URL;
 import java.text.DateFormat;
@@ -5,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import org.jsoup.*;
+import org.jsoup.nodes.*;
+import org.jsoup.select.Elements;
 
 /**
  * Scrapes
@@ -18,20 +22,26 @@ public class Scraper {
      */
 
     public static void main(String[] args) {
-        loadClassDescriptions();
+        //loadClassDescriptions();
 
-        /*
+        //*
         flushCRN();
         flushDist();
-        loadDetailedDescriptions(10001, 10100,"Fall%202017");
+        //loadDetailedDescriptions(10001, 10900,"&TermDescription=Fall%202017");
+        //loadDetailedDescriptions(30001, 31300,"&TermDescription=Spring%202017");
         //*/
+
+        loadClassesNew("2018spring", "Spring 2018");
+
 
         /*
         loadClasses("2016spring", "Spring 2016");
         loadClasses("2016fall", "Fall 2016");
-        loadClasses("2017spring", "Spring 2017");
         //*/
-        //loadClasses("2017fall", "Fall 2017");
+        /*
+        loadClasses("2017spring", "Spring 2017");
+        loadClasses("2017fall", "Fall 2017");
+        //*/
     }
 
     public static String getAutogenString(){
@@ -61,9 +71,8 @@ public class Scraper {
         }
     }
 
-    public static void loadDetailedDescriptions(int start, int end, String suffix){
+    public static void loadDetailedDescriptions(int start, int end, String urlSuffix){
         String base="https://webapps.macalester.edu/utilities/scheduledetail/coursedetail.cfm?CRN=";
-        String urlSuffix = "&TermDescription=" + suffix;
         try{
 
             PrintWriter crnWriter = new PrintWriter(new BufferedWriter(new FileWriter("data/crnData.js", true)));
@@ -79,8 +88,7 @@ public class Scraper {
                     if(scanningDistr && inputLine.contains("<br />")) {
                         String dist = inputLine.substring(0, inputLine.indexOf("<br />"));
                         //System.out.println(dist);
-                        String suf = suffix.replaceAll("%20", " ");
-                        distWriter.println("distData["+i+suf+"] = '" + dist + "';");
+                        distWriter.println("distData['"+i+urlSuffix+"'] = '" + dist + "';");
                     }
                     if(inputLine.contains("<br />") || inputLine.contains("</p>"))
                         scanningDistr = false;
@@ -90,7 +98,7 @@ public class Scraper {
 
                     if(inputLine.contains("Notes")){
                         inputLine=inputLine.replaceAll("\'","\\\\'");
-                        crnWriter.println("descCRN["+i+"] = '"+inputLine+"';");
+                        crnWriter.println("descCRN['"+i+urlSuffix+"'] = '"+inputLine+"';");
                     }
 
                 }
@@ -194,6 +202,100 @@ public class Scraper {
         }
     }
 
+
+    public static void loadClassesNew(String semester, String semesterText){
+        System.out.println("\nLoading Macalester class data for "+semester);
+        //Address is the base semester address
+        String address = "https://www.macalester.edu/registrar/schedules/"+semester+"/class-schedule/";
+        Elements classes, descriptions;
+        Document doc;
+        try {
+            doc = Jsoup.connect(address).get();
+            classes = doc.select("td.class-schedule-course-number");
+            descriptions=doc.select(".class-schedule-notes");
+            System.out.println("Found "+classes.size()+" courses "+descriptions.size());
+        } catch (IOException e) {
+            System.err.println("Failed to retrieve page");
+            e.printStackTrace();
+            return;
+        }
+        System.out.println("Class Schedule page loaded. Parsing...");
+        ArrayList<CourseListing> courses= new ArrayList<>();
+        if(classes.size()!=descriptions.size()){
+            System.err.println("Course listings and descriptions don't match 1:1!!!");
+            return;
+        }
+        for(int i=0; i<classes.size(); i++){
+            Element course, description;
+            course=classes.get(i).parent();
+            description=descriptions.get(i);
+            courses.add(new CourseListing(course, description));
+        }
+
+        System.out.println("Data compiled. Printing to javascript file...");
+
+        try {
+            PrintWriter writer = new PrintWriter("data/courseData" +semester+ ".js", "UTF-8");
+
+            writer.println(getAutogenString());
+
+            writer.println("$(document).ready(function(){");
+            writer.println("    var button='<button id=button"+semester+" onClick=load"+semester+"()>';");
+            writer.println("    button+='"+semesterText+"';");
+            writer.println("    button+='</button>';");
+            writer.println("    $('#buttons').append(button); ");
+            writer.println("});");
+
+            writer.println("function load"+semester+"(){");
+            //writer.println("    table.clear().draw();");
+            writer.println("    table.destroy();");
+            writer.println("    loadTable(courses"+semester+");");
+            writer.println("    addDetails();");
+            writer.println("    selectTable('"+semester+"')");
+            writer.println("}");
+
+            writer.println("var courses"+semester+" = [");
+            for(int i=0; i<courses.size()-1; i++){
+                writer.println(courses.get(i)+",");
+            }
+            writer.println(courses.get(courses.size()-1));
+            writer.println("];");
+            writer.close();
+            System.out.println("Done!");
+
+        } catch(Exception e){
+            System.err.println("Write failed:");
+            e.printStackTrace();
+        }
+
+        System.out.println("Done writing general data, now compiling class descriptions");
+
+        try {
+            PrintWriter crnWriter = new PrintWriter(new BufferedWriter(new FileWriter("data/crnData.js", true)));
+            PrintWriter distWriter = new PrintWriter(new BufferedWriter(new FileWriter("data/distData.js", true)));
+            for(Element description : descriptions){
+               String crn = description.select(".expandable-body").first().id();
+               String notes = "";
+               if(description.children().first().is("p"))
+                   notes += description.children().first().html()+"<br/>";
+               notes+=description.select(".expandable-body p").first().ownText();
+               notes=notes.replaceAll("\'","\\\\'");
+               if(notes.length()>0){
+                   String CRNLine = "descCRN['"+crn+"'] = 'Notes:<br/>"+notes+"';";
+                   crnWriter.println(CRNLine);
+               }
+               String distr = description.select(".expandable-body p").get(2).ownText();
+               if(distr.length()>0){
+                   String distLine = "distData['"+crn+"'] = '"+distr+"';";
+                   distWriter.println(distLine);
+               }
+            }
+            crnWriter.close();
+            distWriter.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
 
     public static void loadClasses(String semester, String semesterText) {
@@ -371,7 +473,7 @@ public class Scraper {
 
         } catch(Exception e){
             System.err.println("Write failed:");
-            System.err.println(e);
+            e.printStackTrace();
         }
 
     }
