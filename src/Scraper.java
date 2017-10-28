@@ -31,7 +31,7 @@ public class Scraper {
         //loadDetailedDescriptions(30001, 31300,"&TermDescription=Spring%202017");
         //*/
 
-        loadClassesNew("2018spring", "Spring 2018");
+        loadClassesNew("2018spring", "Spring 2018", true);
 
 
         /*
@@ -203,17 +203,23 @@ public class Scraper {
     }
 
 
-    public static void loadClassesNew(String semester, String semesterText){
+    public static void loadClassesNew(String semester, String semesterText, boolean loadLocal){
         System.out.println("\nLoading Macalester class data for "+semester);
         //Address is the base semester address
         String address = "https://www.macalester.edu/registrar/schedules/"+semester+"/class-schedule/";
         Elements classes, descriptions;
         Document doc;
         try {
-            doc = Jsoup.connect(address).get();
-            classes = doc.select("td.class-schedule-course-number");
+            if(loadLocal){
+                File input = new File(semester+".html");
+                doc = Jsoup.parse(input, "UTF-8", "");
+            } else {
+                System.out.println("Loading from "+address);
+                doc = Jsoup.connect(address).get();
+            }
+            classes = doc.select(".class-schedule-course-number");
             descriptions=doc.select(".class-schedule-notes");
-            System.out.println("Found "+classes.size()+" courses "+descriptions.size());
+            System.out.println("Found "+classes.size()+" courses");
         } catch (IOException e) {
             System.err.println("Failed to retrieve page");
             e.printStackTrace();
